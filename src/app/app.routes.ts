@@ -5,9 +5,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AccueilCommerceComponent } from './pages/accueil-commerce/accueil-commerce.component';
 import { AccueilGlobalComponent } from './pages/accueilGlobal/accueil.component';
-import { ProfilCommercantComponent } from './pages/profil-commercant/profil-commercant.component';
-import { GestionDesProduitsComponent } from './pages/gestion-des-produits/gestion-des-produits.component';
-import { GestionDesCommandesComponent } from './pages/gestion-des-commandes/gestion-des-commandes.component';
+import { UserProfilComponent } from './pages/user-profil/user-profil.component';
 
 export const routes: Routes = 
 [
@@ -17,7 +15,6 @@ export const routes: Routes =
     { path: 'accueilGlobal', component:AccueilGlobalComponent },
 
     { path: 'commerce/accueil', component:AccueilCommerceComponent },
-    { path: 'commerce/profil-commerçant', component:ProfilCommercantComponent },
-    { path: 'commerce/gestion-des-produits', component:GestionDesProduitsComponent },
-    { path: 'commerce/gestion-des-commandes', component:GestionDesCommandesComponent },
+    { path: 'accueilGlobal', component:AccueilGlobalComponent },
+    { path: 'user-profil', component: UserProfilComponent}
 ];
