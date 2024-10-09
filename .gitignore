@@ -40,3 +40,8 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Ignorer les fichiers générés automatiquement dans le répertoire data
+/data/*
+/data/*
+/data/*
