@@ -1,0 +1,25 @@
+nav 
+{
+    background-color: #132a13 !important;
+
+}
+.navbar-brand 
+{
+    height: 60px;
+}
+nav a 
+{
+    color: #FEFAE0;
+}
+.logo
+{
+    width: 47px;
+}
+.btn-connexion 
+{
+    background-color: #4F772D;
+    padding: 7px;
+    border-radius: 5px;
+    border: 1px solid #838383;
+    color: #FEFAE0;
+}
