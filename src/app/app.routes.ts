@@ -5,6 +5,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AccueilCommerceComponent } from './pages/accueil-commerce/accueil-commerce.component';
 import { AccueilGlobalComponent } from './pages/accueilGlobal/accueil.component';
+import { UserProfilComponent } from './pages/user-profil/user-profil.component';
 
 export const routes: Routes = 
 [
@@ -12,5 +13,6 @@ export const routes: Routes =
     { path: 'register', component: RegisterFormComponent },
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
     { path: 'commerce/accueil', component:AccueilCommerceComponent },
-    { path: 'accueilGlobal', component:AccueilGlobalComponent }
+    { path: 'accueilGlobal', component:AccueilGlobalComponent },
+    { path: 'user-profil', component: UserProfilComponent}
 ];
