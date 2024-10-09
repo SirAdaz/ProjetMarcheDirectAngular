@@ -15,7 +15,7 @@ export const AuthGuard = () => {
   const router = inject(Router)
 
   // Si l'utilisateur est connecté et possède le rôle "ROLE_ADMIN"
-  if (isLoggedIn) {
+  if (isLoggedIn && getRoleAdmin) {
     return true; // Accès autorisé
   } else {
     // Si l'utilisateur n'est pas connecté et ne possède pas le rôle requis, redirection vers la page de connexion
