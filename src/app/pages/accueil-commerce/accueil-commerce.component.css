@@ -1,0 +1,23 @@
+.card{
+    width: 400px !important;
+    height: 150px !important;
+    background-color: #FEFAE0;
+}
+.card img {
+    width: 80px !important;
+    height: 80px !important;
+    margin: 0 10px 0 10px;
+}
+.card .card-content {
+    margin-top: 15px;
+}
+.card h2 {
+    font-size: 20px;
+}
+.card p {
+    font-size: 16px;
+    color: #838383;
+}
+.AC{
+    margin-top: 10%;
+}
