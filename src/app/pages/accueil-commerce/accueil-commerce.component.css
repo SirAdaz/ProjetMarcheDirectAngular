@@ -2,6 +2,8 @@
     width: 400px !important;
     height: 150px !important;
     background-color: #FEFAE0;
+    margin: 15px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
 }
 .card img {
     width: 80px !important;
@@ -18,6 +20,8 @@
     font-size: 16px;
     color: #838383;
 }
-.AC{
-    margin-top: 10%;
+.ac{
+    height: 75vh !important;
+    display: flex;
+    justify-content: center;
 }
