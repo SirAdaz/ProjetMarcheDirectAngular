@@ -32,7 +32,7 @@ export class LoginFormComponent {
           this.auth.setToken("Bearer " + data.token);
           if(this.auth.isLoggedIn()){
             // Navigation vers la page '/admin' après une connexion réussie
-            this.router.navigate(['/admin']);
+            this.router.navigate(['admin']);
           }
         });
       }

@@ -13,6 +13,7 @@
     border-radius: 10px;
     background-color: #FEFAE0;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 80px;
     
 }
 .box-text 
@@ -22,8 +23,14 @@
 .tout-marchés 
 {
     display: flex;
+    width: 90%;
 }
 p
 {
     margin: 0;
+}
+.card
+{
+    align-items: center;
+    margin: 7px;
 }

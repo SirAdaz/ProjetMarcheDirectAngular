@@ -11,6 +11,8 @@ import { GestionDesCommandesComponent } from './pages/gestion-des-commandes/gest
 
 export const routes: Routes = 
 [
+    {path:'', redirectTo:'accueilGlobal', pathMatch: 'full'},
+
     { path: 'login', component: LoginFormComponent },
     { path: 'register', component: RegisterFormComponent },
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },

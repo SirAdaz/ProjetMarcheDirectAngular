@@ -12,18 +12,15 @@
         </div>
     </div>
     <div class="tout-marchés">
-        <div class="box-carte">
-            <img src="" alt="">
-            <p class="marché-text">Marché n°1</p>
-        </div>
-        <div class="box-carte">
-            <img src="" alt="">
-            <p class="marché-text">Marché n°2</p>
-        </div>
-        <div class="box-carte">
-            <img src="" alt="">
-            <p class="marché-text">Marché n°3</p>
-        </div>
+        @for (item of marches; track $index) 
+        {
+            <div class="card" style="width: 16rem;">
+                <img [src]="item.imageFileName" class="card-img-top">
+                <div class="card-body">
+                  <p class="marché-text">{{item.marcheName}}</p>
+                </div>
+              </div>
+        }
     </div>
 </div>
 
