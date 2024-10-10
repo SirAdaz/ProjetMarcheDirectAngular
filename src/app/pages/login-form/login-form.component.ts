@@ -20,7 +20,7 @@ export class LoginFormComponent {
   
     // Formulaire de connexion protégé par le formulaire réactif
     protected loginForm = new FormGroup({
-      username: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
     })
   
