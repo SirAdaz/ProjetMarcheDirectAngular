@@ -23,3 +23,10 @@ nav a
     border: 1px solid #838383;
     color: #FEFAE0;
 }
+.btn-deconnexion{
+    background-color: #BC4749;
+    padding: 7px;
+    border-radius: 5px;
+    border: 1px solid #83838300;
+    color: #FEFAE0;
+}
