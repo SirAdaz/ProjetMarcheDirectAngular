@@ -7,7 +7,7 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root'
 })
 export class AuthService {
-  private urlApi = "https://localhost:8000/api";
+  private urlApi = "https://localhost:8000";
   token = "";
   decodedToken: any = null;
   
@@ -19,11 +19,11 @@ export class AuthService {
   }
 
   signup(data: any) {
-    return this.http.post(`${this.urlApi}/signup`, data)
+    return this.http.post(`${this.urlApi}/register`, data)
   }
 
   login(data: any) {
-    return this.http.post<{ token: string }>(`${this.urlApi}/login_check`, data).pipe(
+    return this.http.post<{ token: string }>(`${this.urlApi}/api/login_check`, data).pipe(
       tap(response => {
         this.setToken(response.token);
       })

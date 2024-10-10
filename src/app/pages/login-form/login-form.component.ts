@@ -20,7 +20,7 @@ export class LoginFormComponent {
   
     // Formulaire de connexion protégé par le formulaire réactif
     protected loginForm = new FormGroup({
-      username: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
     })
   
@@ -32,7 +32,7 @@ export class LoginFormComponent {
           this.auth.setToken("Bearer " + data.token);
           if(this.auth.isLoggedIn()){
             // Navigation vers la page '/admin' après une connexion réussie
-            this.router.navigate(['/admin']);
+            this.router.navigate(['admin']);
           }
         });
       }
