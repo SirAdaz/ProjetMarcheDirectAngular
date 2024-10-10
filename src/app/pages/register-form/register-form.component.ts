@@ -22,17 +22,22 @@ export class RegisterFormComponent {
     
       // Formulaire d'inscription protégé par le formulaire réactif
       public registerForm = new FormGroup({
-        username: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('', [Validators.required])
+        email: new FormControl('', [Validators.required, Validators.email]),
+        password: new FormControl('', [Validators.required]),
+        username: new FormControl('', [Validators.required]),
+        tel: new FormControl('', [Validators.required]),
       })
     
       private addUser(): void {
-        this.auth.signup(this.registerForm.value).subscribe((data: any) => {
-          console.log(data);
-          this.router.navigate(['/login']);
-        });
-        this.registerForm.reset(); // Réinitialise le formulaire après soumission
-        this.submitted = false; // Réinitialise l'indicateur de soumission
+        this.auth.signup(this.registerForm.value).subscribe(
+          (data: any) => {
+            console.log(data);
+            this.router.navigate(['/login']);
+          },
+          (error) => {
+            console.error('Erreur lors de l’inscription', error);
+          }
+        );
       }
     
       // Méthode appelée à la soumission du formulaire
@@ -41,6 +46,7 @@ export class RegisterFormComponent {
         if (this.registerForm.valid) { // Vérifie si le formulaire est valide
           this.message = true; // Affiche un message si le formulaire est valide
           this.addUser(); // Appelle la méthode pour ajouter un auteur
+          this.router.navigate(['login']); // Redirection vers la page de connexion
         }
       }
   }

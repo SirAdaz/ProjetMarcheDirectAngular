@@ -19,7 +19,11 @@
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
         </form> 
-        <button class="btn-connexion" type="submit" routerLink="login">Se connecter</button>
+        @if (isLoggedIn()){
+          <button class="btn-connexion" type="submit" (click)="logout()">Se déconnecter</button>
+        } @else {
+          <button class="btn-connexion" type="submit" routerLink="login">Se connecter</button>
+        }
       </div>
     </div>
   </nav>
