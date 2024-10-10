@@ -7,7 +7,7 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root'
 })
 export class AuthService {
-  private urlApi = "http://localhost:8000/api";
+  private urlApi = "https://localhost:8000/api";
   token = "";
   decodedToken: any = null;
   

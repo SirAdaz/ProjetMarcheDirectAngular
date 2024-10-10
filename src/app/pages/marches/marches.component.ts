@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import Marche from '../../models/marche.model';
 import { MarchesService } from '../../services/marches.service';
 
 @Component({
-  selector: 'app-accueil',
+  selector: 'app-marches',
   standalone: true,
   imports: [],
-  templateUrl: './accueil.component.html',
-  styleUrl: './accueil.component.css'
+  templateUrl: './marches.component.html',
+  styleUrl: './marches.component.css'
 })
-export class AccueilGlobalComponent implements OnInit
+export class MarchesComponent 
 {
   marches !: Marche[]
 

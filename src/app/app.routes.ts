@@ -8,6 +8,7 @@ import { AccueilGlobalComponent } from './pages/accueilGlobal/accueil.component'
 import { ProfilCommercantComponent } from './pages/profil-commercant/profil-commercant.component';
 import { GestionDesProduitsComponent } from './pages/gestion-des-produits/gestion-des-produits.component';
 import { GestionDesCommandesComponent } from './pages/gestion-des-commandes/gestion-des-commandes.component';
+import { MarchesComponent } from './pages/marches/marches.component';
 
 export const routes: Routes = 
 [
@@ -17,6 +18,7 @@ export const routes: Routes =
     { path: 'register', component: RegisterFormComponent },
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
     { path: 'accueilGlobal', component:AccueilGlobalComponent },
+    { path: 'marches', component:MarchesComponent},
 
     { path: 'commerce/accueil', component:AccueilCommerceComponent },
     { path: 'commerce/profil-commerçant', component:ProfilCommercantComponent },
