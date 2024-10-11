@@ -1,0 +1,44 @@
+<div class="container mt-5">
+  <!-- Message de bienvenue -->
+  <div class="row">
+    <div class="col text-center">
+      <label for="userImage"></label>
+      <input type="file" id="userImage" name="userImage">
+      <h1>Bienvenue, prénom !</h1>
+    </div>
+  </div>
+
+  <!-- Actions de l'utilisateur -->
+  <div class="row mt-4">
+    <div class="col text-center">
+      <a href="#" class="btn btn-success mx-2" style="margin: 5px;">Votre Panier</a>
+      <a href="#" class="btn btn-success mx-2">Voir vos Avis</a>
+    </div>
+  </div>
+
+  <!-- Infos du User -->
+  <div class="row mt-5">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          Retrouvez votre Historique de Commandes
+        </div>
+        <div class="card-body">
+          <p><strong>Numéro de la Commande: 00012568</strong></p>
+          <img [src]="'images/courgettes.jpg'" alt="" class="product-picture">
+          <p><strong>Produit commandé: Courgettes</strong></p>
+          <p><strong>Date de retrait de votre commande:</strong> 11/10/2024</p>
+          <p><strong>Heure de Récupération:</strong>12:30</p>
+          <p><strong>Etat de la commande:</strong> Prête</p>
+          <hr>
+          <p><strong>Numéro de la Commande: 00012568</strong></p>
+          <img [src]="'images/tomate.jpg'" alt="" class="product-picture">
+          <p><strong>Produit commandé: Tomates</strong></p>
+          <p><strong>Date de retrait de votre commande:</strong> 11/10/2024</p>
+          <p><strong>Heure de Récupération:</strong>12:30</p>
+          <p><strong>Etat de la commande:</strong> Prête</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
