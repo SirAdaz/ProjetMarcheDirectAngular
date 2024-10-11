@@ -6,6 +6,6 @@ export interface User {
     userName: string;
     tel: string;
     nameBusiness: string;
-    stats: string [] ;
+    stats: [] ;
   }
   
