@@ -4,15 +4,16 @@
       <div class="col text-center">
         <label for="userImage"></label>
         <input type="file" id="userImage" name="userImage">
-        <h1>Bienvenue, prénom !</h1>
+        <h1>Bienvenue, {{ user?.userName}} !</h1>
       </div>
     </div>
 
     <!-- Actions de l'utilisateur -->
     <div class="row mt-4">
       <div class="col text-center">
-        <a [routerLink]="['/user-command-history/userId']" class="btn btn-success mx-2">Historique commandes</a>
-        <a href="#" class="btn btn-success mx-2" style="margin: 5px;">Votre Panier</a>
+        <a [routerLink]="['/user-command-history/userId']" class="btn btn-success mx-2">Historique de vos commandes</a>
+        <a [routerLink]="['/user-cart']" class="btn btn-success mx-2">Voir votre Panier</a>
+
         <a href="#" class="btn btn-success mx-2">Voir vos Avis</a>
       </div>
     </div>
@@ -25,11 +26,11 @@
             Vos Informations
           </div>
           <div class="card-body">
-            <p><strong>Email:</strong>elyayusd&#64;gmail.com</p>
-            <p><strong>Nom d'utilisateur:</strong> John Doe</p>
-            <p><strong>Num de Tel:</strong> 0788000012</p>
-            <p><strong>Nom de la Boutique:</strong> Market-One</p>
-            <p><strong>Statistiques:</strong> 50%</p>
+            <p><strong>Email:</strong>{{ user?.email}}</p>
+            <p><strong>Nom d'utilisateur:</strong>{{ user?.userName}}</p>
+            <p><strong>Num de Tel:</strong>{{ user?.tel}}</p>
+            <p><strong>Nom de la Boutique:</strong>{{ user?.nameBusiness}}</p>
+            <p><strong>Statistiques:</strong>{{ user?.stats}}</p>
           </div>
         </div>
       </div>

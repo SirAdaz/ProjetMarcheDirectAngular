@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, RouterLink, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
+import { User } from '../../models/user.model';
 import { command } from '../../models/command.model';
 
 @Component({
@@ -12,19 +13,15 @@ import { command } from '../../models/command.model';
   styleUrls: ['./user-command-history.component.css']
 })
 export class UserCommandHistoryComponent implements OnInit {
-  userId: number = 1; // Exemple de user
-  commands: command[] = [];
+  commands: command[] = []; // Tableau pour stocker les commandes
+  user: User | undefined;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.userService.getUserCommands(this.userId).subscribe(
-      (data) => {
-        this.commands = data;
-      },
-      (error) => {
-        console.error('Erreur lors de la récupération des commandes du user:', error);
-      }
-    );
+    const userId = this.route.snapshot.params['id']; // Récupérer l'ID de l'utilisateur depuis l'URL
+    this.userService.getUserCommands(userId).subscribe((data: command[]) => {
+      this.commands = data; // Stocker les commandes dans le tableau
+    });
   }
 }

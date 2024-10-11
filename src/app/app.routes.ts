@@ -7,6 +7,7 @@ import { AccueilCommerceComponent } from './pages/accueil-commerce/accueil-comme
 import { AccueilGlobalComponent } from './pages/accueilGlobal/accueil.component';
 import { UserProfilComponent } from './pages/user-profil/user-profil.component';
 import { UserCommandHistoryComponent } from './pages/user-command-history/user-command-history.component';
+import { UserCartComponent } from './pages/user-cart/user-cart.component';
 
 export const routes: Routes = 
 [
@@ -18,5 +19,6 @@ export const routes: Routes =
     { path: 'commerce/accueil', component:AccueilCommerceComponent },
     { path: 'accueilGlobal', component:AccueilGlobalComponent },
     { path: 'user-profil', component: UserProfilComponent},
-    { path: 'user-command-history/:userId', component: UserCommandHistoryComponent }
+    { path: 'user-command-history/:userId', component: UserCommandHistoryComponent },
+    { path: 'user-cart', component: UserCartComponent },
 ];
