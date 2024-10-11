@@ -14,6 +14,11 @@ export class MarchesService
   getMarches():Observable<{member:Marche[]}>
   {
     return this.http.get<{member:Marche[]}>(`${this.urlApi}/marches`)
-  }        
+  }
+  
+  getMachesAccueil():Observable<{member:Marche[]}>
+  {
+    return this.http.get<{member:Marche[]}>(`${this.urlApi}/marches?itemsPerPage=3`)
+  }
 
 }

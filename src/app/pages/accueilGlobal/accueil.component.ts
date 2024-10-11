@@ -16,7 +16,7 @@ export class AccueilGlobalComponent implements OnInit
   constructor(private marchesServices: MarchesService) {}
 
   ngOnInit(): void {
-    this.marchesServices.getMarches().subscribe((response) => {
+    this.marchesServices.getMachesAccueil().subscribe((response) => {
       if (Array.isArray(response.member)) {
         this.marches = response.member;
       } else {
