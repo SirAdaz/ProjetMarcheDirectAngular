@@ -22,6 +22,16 @@ export class UserCartComponent implements OnInit {
       this.cartItems = items;
     });
   }
+  getTotalItems(): number {
+    // Calcul du nombre total de produits dans le panier
+    return this.cartItems.reduce((total, item) => total + item.quantity, 0);
+  }
+  
+  getTotalPrice(): number {
+    // Calcul du prix total des produits dans le panier
+    return this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+  }
+  
 
   clearCart(): void {
     // Suppression des produits du panier
