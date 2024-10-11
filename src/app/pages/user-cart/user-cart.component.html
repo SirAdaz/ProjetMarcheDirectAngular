@@ -13,10 +13,16 @@
       <div *ngFor="let item of cartItems" class="cart-item">
         <img [src]="item.imageUrl" alt="{{ item.productName }}" class="img-fluid" width="100">
         <p>{{ item.productName }} (x{{ item.quantity }})</p>
-        <p>Prix: {{ item.price | currency }}</p>
+        <p>Prix: {{ item.price }}</p>
       </div>
       <button class="btn btn-danger mt-4" (click)="clearCart()">Vider le panier</button>
     </div>
+    <!-- Bloc pour le récapitulatif du panier -->
+  <div class="cart-summary mt-4">
+    <p><strong>Nombres d’articles:</strong> {{ getTotalItems() }}</p>
+    <p><strong>Total:</strong> {{ getTotalPrice() }}</p>
+    <button class="btn btn-primary">Commander</button>
+  </div>
     <ng-template #emptyCart>
       <p>Votre panier est vide.</p>
     </ng-template>
