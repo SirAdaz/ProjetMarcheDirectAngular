@@ -11,9 +11,14 @@ export class MarchesService
   private urlApi = "https://127.0.0.1:8000/api"
   constructor(private http: HttpClient) { }
 
-  getMarches():Observable<{member:Marche[]}>
+  getMarches():Observable<Marche[]>
   {
-    return this.http.get<{member:Marche[]}>(`${this.urlApi}/marches`)
-  }        
+    return this.http.get<Marche[]>(`${this.urlApi}/marches`)
+  }
+  
+  getMarche(id: number):Observable<Marche> 
+  {
+    return this.http.get<Marche>(`${this.urlApi}/marches/${id}`)
+  }
 
 }

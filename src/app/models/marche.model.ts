@@ -1,3 +1,5 @@
+import Jours from "./jours.models";
+
 export default interface Marche 
 {
     id: number;
@@ -5,4 +7,7 @@ export default interface Marche
     place: string;
     hourly: string;
     imageFileName: string;
+    description: Text;
+    days: Jours[];
+    commercantMarche: [];
 }

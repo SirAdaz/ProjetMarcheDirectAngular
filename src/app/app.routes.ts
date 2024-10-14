@@ -7,6 +7,7 @@ import { AccueilCommerceComponent } from './pages/accueil-commerce/accueil-comme
 import { AccueilGlobalComponent } from './pages/accueilGlobal/accueil.component';
 import { UserProfilComponent } from './pages/user-profil/user-profil.component';
 import { MarchesComponent } from './pages/marches/marches.component';
+import { PageMarcheComponent } from './pages/page-marche/page-marche.component';
 
 export const routes: Routes = 
 [
@@ -17,6 +18,7 @@ export const routes: Routes =
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
     { path: 'accueilGlobal', component:AccueilGlobalComponent },
     { path: 'marches', component:MarchesComponent},
+    { path: 'marches/:id', component:PageMarcheComponent},
 
     { path: 'commerce/accueil', component:AccueilCommerceComponent },
     { path: 'accueilGlobal', component:AccueilGlobalComponent },

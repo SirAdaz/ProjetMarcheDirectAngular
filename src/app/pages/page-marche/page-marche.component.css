@@ -1,0 +1,43 @@
+.box-unMarché 
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 40px;
+}
+.card 
+{
+    border-radius: 20px;
+    background-color: #fefae0;
+    display: flex;
+    flex-direction: row;
+    border-color: #838383;
+    max-width: 1500px;
+}
+.image-text 
+{
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+
+}
+img
+{
+    border-radius: 10px;
+    max-width: 800px;
+}
+p
+{
+    margin: 0;
+}
+.card-text 
+{
+    margin: 10px;
+    text-align: center;
+    border-left: #838383 solid 1px;
+}
+h1 
+{
+    border-bottom: #838383 solid 1px;
+}
+
