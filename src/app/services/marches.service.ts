@@ -11,7 +11,7 @@ export class MarchesService
   private urlApi = "https://127.0.0.1:8000/api"
   constructor(private http: HttpClient) { }
 
-  getMarches():Observable<{member:Marche[]}>
+  getMarchesMembre():Observable<{member:Marche[]}>
   {
     return this.http.get<{member:Marche[]}>(`${this.urlApi}/marches`)
   }
@@ -20,5 +20,8 @@ export class MarchesService
   {
     return this.http.get<{member:Marche[]}>(`${this.urlApi}/marches?itemsPerPage=3`)
   }
-
+  // Méthode pour récupérer les autres pages des auteurs
+  getMarchesOtherPages(i: number): Observable<{member:Marche[]}> {
+    return this.http.get<{member:Marche[]}>(`${this.urlApi}/marches?itemsPerPage=6&page=${i}`);
+  }
 }
