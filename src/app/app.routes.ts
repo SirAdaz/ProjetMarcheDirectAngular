@@ -18,7 +18,6 @@ export const routes: Routes =
     { path: 'accueilGlobal', component:AccueilGlobalComponent },
 
     { path: 'commerce/accueil', component:AccueilCommerceComponent },
-    { path: 'accueilGlobal', component:AccueilGlobalComponent },
     { path: 'user-profil', component: UserProfilComponent},
     { path: 'user-command-history/:userId', component: UserCommandHistoryComponent },
     { path: 'user-cart', component: UserCartComponent },
