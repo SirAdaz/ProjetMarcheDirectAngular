@@ -7,5 +7,5 @@ export interface User {
     tel: string;
     nameBusiness: string;
     stats: [] ;
+    imageFileName: string;
   }
-  

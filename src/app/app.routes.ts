@@ -11,6 +11,9 @@ import { UserCommentComponent } from './pages/user-comment/user-comment.componen
 import { UserProfilComponent } from './pages/user-profil/user-profil.component';
 import { MarchesComponent } from './pages/marches/marches.component';
 import { PageMarcheComponent } from './pages/page-marche/page-marche.component';
+import { GestionDesCommandesComponent } from './pages/gestion-des-commandes/gestion-des-commandes.component';
+import { GestionDesProduitsComponent } from './pages/gestion-des-produits/gestion-des-produits.component';
+import { ProfilCommercantComponent } from './pages/profil-commercant/profil-commercant.component';
 
 export const routes: Routes = 
 [
@@ -24,6 +27,9 @@ export const routes: Routes =
     { path: 'marches/:id', component:PageMarcheComponent},
 
     { path: 'commerce/accueil', component:AccueilCommerceComponent },
+    { path: 'commerce/profil-commerçant/:id', component:ProfilCommercantComponent },
+    { path: 'commerce/gestion-des-produits', component:GestionDesProduitsComponent },
+    { path: 'commerce/gestion-des-commandes', component:GestionDesCommandesComponent },
     { path: 'user-profil', component: UserProfilComponent},
     { path: 'user-command-history/:userId', component: UserCommandHistoryComponent },
     { path: 'user-cart', component: UserCartComponent },
