@@ -12,7 +12,8 @@ import { RouterLink } from '@angular/router';
 })
 export class MarchesComponent 
 {
-  marches !: Marche[]
+  marches !: Marche[];
+  urlImg = "https://127.0.0.1:8000/images/";
 
   constructor(private marchesServices: MarchesService) {}
 

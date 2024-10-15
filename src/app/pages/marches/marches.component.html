@@ -2,7 +2,7 @@
     @for (item of marches; track $index) 
     {
         <a class="card" style="width: 17rem;" routerLink="{{item.id}}">
-            <img [src]="item.imageFileName">
+            <img [src]="urlImg + item.imageFileName">
             <div class="card-body">
               <h5 class="marché-text">{{item.marcheName}}</h5>
               <p class="marché-text">{{item.place}}</p>
