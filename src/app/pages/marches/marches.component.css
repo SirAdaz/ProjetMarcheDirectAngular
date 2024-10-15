@@ -1,0 +1,21 @@
+
+.card 
+{
+    margin: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+img 
+{
+    margin: 10px;
+    border-radius: 10px;
+}
+p 
+{
+    margin: 0;
+    text-align: center;
+}
+h5 
+{
+    text-align: center;
+}

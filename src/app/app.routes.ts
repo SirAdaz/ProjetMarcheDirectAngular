@@ -9,13 +9,19 @@ import { UserCartComponent } from './pages/user-cart/user-cart.component';
 import { UserCommandHistoryComponent } from './pages/user-command-history/user-command-history.component';
 import { UserCommentComponent } from './pages/user-comment/user-comment.component';
 import { UserProfilComponent } from './pages/user-profil/user-profil.component';
+import { MarchesComponent } from './pages/marches/marches.component';
+import { PageMarcheComponent } from './pages/page-marche/page-marche.component';
 
 export const routes: Routes = 
 [
+    {path:'', redirectTo:'accueilGlobal', pathMatch: 'full'},
+
     { path: 'login', component: LoginFormComponent },
     { path: 'register', component: RegisterFormComponent },
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
     { path: 'accueilGlobal', component:AccueilGlobalComponent },
+    { path: 'marches', component:MarchesComponent},
+    { path: 'marches/:id', component:PageMarcheComponent},
 
     { path: 'commerce/accueil', component:AccueilCommerceComponent },
     { path: 'user-profil', component: UserProfilComponent},
