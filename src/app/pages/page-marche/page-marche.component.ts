@@ -27,7 +27,7 @@ export class PageMarcheComponent implements OnInit
 
   private subscribeMarche(id:number) 
   {
-    this.marcheServices.getMarche(id).subscribe((data)=> (this.marche = data, console.log(data)
+    this.marcheServices.getMarche(id).subscribe((data)=> (this.marche = data, console.log(data.days[0])
     ))
   }
 
