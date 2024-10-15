@@ -14,6 +14,7 @@ export class MarchesComponent
 {
   marches!: Marche[]
   i=1;
+  urlImg = "https://127.0.0.1:8000/images/";
 
   constructor(private marchesServices: MarchesService) {}
 

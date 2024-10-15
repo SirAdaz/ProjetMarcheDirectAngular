@@ -6,18 +6,16 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class MarchesService 
-{
+
+export class MarchesService {
   private urlApi = "https://127.0.0.1:8000/api"
   constructor(private http: HttpClient) { }
 
-  getMarches():Observable<Marche[]>
-  {
+  getMarches(): Observable<Marche[]> {
     return this.http.get<Marche[]>(`${this.urlApi}/marches`)
   }
-  
-  getMarche(id: number):Observable<Marche> 
-  {
+
+  getMarche(id: number): Observable<Marche> {
     return this.http.get<Marche>(`${this.urlApi}/marches/${id}`)
   }
 

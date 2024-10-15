@@ -1,16 +1,20 @@
-<div class="tous-marchés">
-    @for (item of marches; track $index) 
-    {
-        <a class="card" style="width: 18rem;" routerLink="{{item.id}}">
-            <img [src]="item.imageFileName">
-            <div class="card-body">
-              <h5 class="marché-text">{{item.marcheName}}</h5>
-              <p class="marché-text">{{item.place}}</p>
-              <p class="marché-text">De {{item.hourly}}</p>
-            </div>
-        </a>
-    }
-    <button class="btn btn-pagination" (click)="getMarchesOtherPagesMoins()">Précédent</button>
-    <button class="btn btn-pagination" (click)="getMarchesOtherPagesPlus()">Suivant</button>
+<div class="body-marches">
+    <div class="tout-marches row">
+        @for (item of marches; track $index) 
+        {
+            <a class="card col-3" routerLink="{{item.id}}">
+                <div class="image-marche" [style.backgroundImage]="'url(' + urlImg + item.imageFileName + ')'"></div>
+                    <div class="card-body">
+                        <h5 class="marche-text">{{item.marcheName}}</h5>
+                        <p class="marche-text">{{item.place}}</p>
+                        <p class="marche-text">De {{item.hourly}}</p>
+                    </div>
+            </a>
+        }
+        <div class="btn-page">
+            <button class="btn btn-pagination" (click)="getMarchesOtherPagesMoins()">Précédent</button>
+            <button class="btn btn-pagination" (click)="getMarchesOtherPagesPlus()">Suivant</button>
+        </div>
+        
+    </div>
 </div>
-
