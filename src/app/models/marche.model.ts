@@ -8,6 +8,5 @@ export default interface Marche
     hourly: string;
     imageFileName: string;
     description: Text;
-    days: Jours[];
-    commercantMarche: [];
+    days: Jours [];
 }

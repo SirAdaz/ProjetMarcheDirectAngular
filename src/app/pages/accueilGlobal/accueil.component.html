@@ -11,15 +11,16 @@
             <br>Découvrez une nouvelle façon de faire vos achats tout en soutenant vos commerçants de proximité !</p>
         </div>
     </div>
-    <div class="tout-marchés">
+    <div class="tout-marches">
         @for (item of marches; track $index) 
         {
-            <div class="card" style="width: 16rem;">
-                <img [src]="item.imageFileName" class="card-img-top">
-                <div class="card-body">
-                  <p class="marché-text">{{item.marcheName}}</p>
+            <div class="card" routerLink="/marches/{{item.id}}">
+                <div class="image-marche" [style.backgroundImage]="'url(' + imgUrl + item.imageFileName + ')'"></div>
+                    <div class="card-body">
+                        <h5 class="marche-text">{{item.marcheName}}</h5>
+                        <p class="marche-text">{{item.hourly}}</p>
                 </div>
-              </div>
+            </div>    
         }
     </div>
 </div>

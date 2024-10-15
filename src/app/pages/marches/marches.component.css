@@ -1,21 +1,60 @@
-
+.body-marches
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+}
+.tout-marches 
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 90%;
+}
 .card 
 {
-    margin: 15px;
-    border-radius: 10px;
     text-decoration: none;
-}
-img 
-{
-    margin: 10px;
+    width: 28rem;
+    height: 15rem;
+    background-color: #FEFAE0;
+    padding: 7px;
     border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(79, 79, 79, 0.5);
+    margin: 20px 10px;
+}
+.image-marche 
+{
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    height: 150px;
+    width: 100%;
+    margin: 0;
 }
 p 
 {
     margin: 0;
-    text-align: center;
 }
-h5 
+.marche-text
 {
-    text-align: center;
+  text-align: center;  
+}
+.btn-page
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.btn-pagination{
+    background-color: #132a13;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #838383;
+    color: #FEFAE0;
+    width: fit-content;
+}
+.btn-pagination:hover{
+    background-color: #4F772D;
 }
