@@ -6,6 +6,8 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { AccueilCommerceComponent } from './pages/accueil-commerce/accueil-commerce.component';
 import { AccueilGlobalComponent } from './pages/accueilGlobal/accueil.component';
 import { UserProfilComponent } from './pages/user-profil/user-profil.component';
+import { UserCommandHistoryComponent } from './pages/user-command-history/user-command-history.component';
+import { UserCartComponent } from './pages/user-cart/user-cart.component';
 import { MarchesComponent } from './pages/marches/marches.component';
 import { PageMarcheComponent } from './pages/page-marche/page-marche.component';
 
@@ -22,5 +24,7 @@ export const routes: Routes =
 
     { path: 'commerce/accueil', component:AccueilCommerceComponent },
     { path: 'accueilGlobal', component:AccueilGlobalComponent },
-    { path: 'user-profil', component: UserProfilComponent}
+    { path: 'user-profil', component: UserProfilComponent},
+    { path: 'user-command-history/:userId', component: UserCommandHistoryComponent },
+    { path: 'user-cart', component: UserCartComponent },
 ];

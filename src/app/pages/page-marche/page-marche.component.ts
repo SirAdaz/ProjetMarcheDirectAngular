@@ -16,7 +16,7 @@ export class PageMarcheComponent implements OnInit
 {
   marche !: Marche
 
-  jours !: Jours[]
+  jours !: Jours
 
   marcheServices = inject(MarchesService)
   joursServices = inject(JoursService)
@@ -27,7 +27,7 @@ export class PageMarcheComponent implements OnInit
 
   private subscribeMarche(id:number) 
   {
-    this.marcheServices.getMarche(id).subscribe((data)=> (this.marche = data, console.log(data.days)
+    this.marcheServices.getMarche(id).subscribe((data)=> (this.marche = data, console.log(data)
     ))
   }
 
@@ -43,6 +43,5 @@ export class PageMarcheComponent implements OnInit
   {
     const id = this.route.snapshot.paramMap.get('id');
     this.setSubscribe(id);
-    this.joursServices.getDays().subscribe((data)=> {this.jours = data})
   }
 }

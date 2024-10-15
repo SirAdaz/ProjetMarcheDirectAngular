@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
 import { ActivatedRoute } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-user-profil',
+  standalone: true,
+  imports: [RouterModule, RouterLink],
   templateUrl: './user-profil.component.html',
   styleUrls: ['./user-profil.component.css']
 })
