@@ -1,0 +1,27 @@
+<div class="box-unMarché">
+    <div class="card">
+        <div class="image-text">
+            <div class="image">
+                <img [src]="urlImg + marche.imageFileName">
+            </div>
+            <div class="commercant-description">
+                <div class="card-text">
+                    <h1 class="nom-marché">{{marche.marcheName}}</h1>
+                    <p class="description">{{marche.description}}</p>
+                    <p class="lieu-marché">{{marche.place}}</p>
+                    <h5 class="jour-marché">Jours du marché et horaire :</h5> 
+                    @for (day of marche.days; track $index) 
+                    {
+                        <div class="d-flex justify-content-center">
+                            <p class="jour-marché me-1">{{day.name}} :</p>
+                            <p class="heure-marché">De {{marche.hourly}}</p>
+                        </div>
+                    }
+                </div>
+                <div class="commercant-note">
+                    <h3 class="box-commercant">Commerçants</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
