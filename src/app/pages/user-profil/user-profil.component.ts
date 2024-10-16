@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
 import { User } from '../../models/user.model';
-import { ActivatedRoute } from '@angular/router';
-import { RouterLink, RouterModule } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user-profil',
@@ -14,17 +14,22 @@ import { RouterLink, RouterModule } from '@angular/router';
 export class UserProfilComponent implements OnInit {
   user: User | undefined;
 
-  constructor(private userService: UserService, private route: ActivatedRoute) {}
+  constructor(private userService: UserService, private authService: AuthService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const userId = this.route.snapshot.params['id']; // Récupèrer l'ID de l'utilisateur depuis l'url
-    this.userService.getUserProfile(userId).subscribe(
-      (data: User) => {
-        this.user = data;
-      },
-      (error) => {
-        console.error('Erreur lors de la récupération des informations de l’utilisateur', error);
-      }
-    );
+    const userId = this.authService.getUserId();
+    if (userId) {
+      this.userService.getUserProfile(userId).subscribe(
+        (userData) => {
+          this.user = userData;
+        },
+        (error) => {
+          console.error('Erreur lors de la récupération des informations utilisateur:', error);
+        }
+      );
+    } else {
+      console.error('ID utilisateur non trouvé');
+    }
   }
+  
 }

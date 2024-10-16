@@ -1,7 +1,7 @@
-import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -70,4 +70,11 @@ export class AuthService {
       // Retourne false si le token décodé n'existe pas ou si l'utilisateur ne possède pas le rôle spécifié
       return false
     }
+    getUserId(): number | null {
+      if (this.decodedToken && this.decodedToken.id) {
+        return this.decodedToken.id;
+      }
+      return null;
+    }
+    
 }
