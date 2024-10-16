@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Marche from '../../models/marche.model';
 import { MarchesService } from '../../services/marches.service';
-import { RouterLink } from '@angular/router';
+import { PreloadAllModules, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-accueil',
@@ -12,13 +12,13 @@ import { RouterLink } from '@angular/router';
 })
 export class AccueilGlobalComponent implements OnInit
 {
-  marches !: Marche[];
+  marches!: Marche[];
   imgUrl = "https://127.0.0.1:8000/images/"
 
   constructor(private marchesServices: MarchesService) {}
 
   ngOnInit(): void 
-{
-    this.marchesServices.getMarchesAccueil().subscribe((data) => {this.marches = data})
-}
+  {
+   this.marchesServices.getMarchesAccueil().subscribe((data) => {this.marches = data})
+  }
 }
