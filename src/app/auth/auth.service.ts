@@ -73,17 +73,14 @@ export class AuthService {
     if (this.decodedToken) {
       return this.decodedToken.roles.some((role: string) => role === value);
     }
-<<<<<<< HEAD
-    getUserId(): number | null {
-      if (this.decodedToken && this.decodedToken.id) {
-        return this.decodedToken.id;
-      }
-      return null;
-    }
-    
-=======
     // Retourne false si le token décodé n'existe pas ou si l'utilisateur ne possède pas le rôle spécifié
     return false;
   }
->>>>>>> 873f078ed79505cd788d28150bd08bfd10855d66
+    
+  getUserId(): number | null {
+    if (this.decodedToken && this.decodedToken.id) {
+      return this.decodedToken.id;
+    }
+    return null;
+  }
 }
