@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { User } from '../../models/user.model';
-import { UserService } from '../../services/user.service';
-import { NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-accueil-commerce',
@@ -11,19 +9,12 @@ import { NgIf } from '@angular/common';
   templateUrl: './accueil-commerce.component.html',
   styleUrl: './accueil-commerce.component.css'
 })
-export class AccueilCommerceComponent implements OnInit {
-  userProfile: any;
+export class AccueilCommerceComponent {
+  loggedIn: any;
 
-  constructor(private userService: UserService) { }
+  constructor(public auth: AuthService){}
 
-ngOnInit(): void {
-  this.userService.getUserProfileTest().subscribe(
-    data => {
-      this.userProfile = data;
-    },
-    error => {
-      console.error('Erreur lors de la récupération des données du profil', error);
-    }
-  );
-}
+  ngOnInit(): void {
+    this.loggedIn = this.auth.isLoggedIn();
+  }
 }
