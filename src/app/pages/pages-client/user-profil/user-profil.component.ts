@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
-import { User } from '../../models/user.model';
 import { ActivatedRoute } from '@angular/router';
 import { RouterLink, RouterModule } from '@angular/router';
+import { User } from '../../../models/user.model';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-user-profil',
@@ -23,7 +23,7 @@ export class UserProfilComponent implements OnInit {
         this.user = data;
       },
       (error) => {
-        console.error('Erreur lors de la récupération des informations de l’utilisateur', error);
+        console.error('Erreur lors de la récupération des informations de l\'utilisateur', error);
       }
     );
   }

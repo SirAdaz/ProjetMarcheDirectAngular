@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Comment } from '../../models/comment.model';
-import { CommentService } from '../../services/comment.service';
+import { Comment } from '../../../models/comment.model';
+import { CommentService } from '../../../services/comment.service';
 
 @Component({
   selector: 'app-user-comment',

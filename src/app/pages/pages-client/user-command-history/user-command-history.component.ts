@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, RouterLink, ActivatedRoute } from '@angular/router';
+import { RouterModule, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../../services/user.service';
-import { User } from '../../models/user.model';
-import { command } from '../../models/command.model';
+import { UserService } from '../../../services/user.service';
+import { User } from '../../../models/user.model';
+import { command } from '../../../models/command.model';
 
 @Component({
   selector: 'app-user-command-history',
