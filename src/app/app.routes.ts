@@ -14,6 +14,7 @@ import { PageMarcheComponent } from './pages/page-marche/page-marche.component';
 import { RgpdComponent } from './pages/legal/rgpd/rgpd.component';
 import { MentionLegaleComponent } from './pages/legal/mention-legale/mention-legale.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { InterditComponent } from './pages/interdit/interdit.component';
 
 export const routes: Routes = 
 [
@@ -36,4 +37,5 @@ export const routes: Routes =
     { path: 'user/cart', component: UserCartComponent },
     { path: 'user/comments', component: UserCommentComponent },
     { path: 'notfound', component: NotFoundComponent},
+    { path: 'interdit', component: InterditComponent},
 ];
