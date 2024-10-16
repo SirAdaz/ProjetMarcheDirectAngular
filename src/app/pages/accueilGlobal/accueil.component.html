@@ -12,16 +12,72 @@
         </div>
     </div>
     <div class="tout-marches">
-        @for (item of marches; track $index) 
-        {
-            <div class="card" routerLink="/marches/{{item.id}}">
-                <div class="image-marche" [style.backgroundImage]="'url(' + imgUrl + item.imageFileName + ')'"></div>
-                    <div class="card-body">
-                        <h5 class="marche-text">{{item.marcheName}}</h5>
-                        <p class="marche-text">{{item.hourly}}</p>
-                </div>
-            </div>    
+        @defer(){
+            @for (item of marches; track $index) 
+            {
+                <div class="card" routerLink="/marches/{{item.id}}">
+                    <div class="image-marche" [style.backgroundImage]="'url(' + imgUrl + item.imageFileName + ')'"></div>
+                        <div class="card-body">
+                            <h5 class="marche-text">{{item.marcheName}}</h5>
+                            <p class="marche-text">{{item.hourly}}</p>
+                    </div>
+                </div>    
+            }
         }
+        @error {
+            <span>Error</span>
+          }
+        @loading(minimum 1s) {
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border text-success" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border text-warning" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border text-info" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-success" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-warning" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-info" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+          }
+
     </div>
 </div>
 
