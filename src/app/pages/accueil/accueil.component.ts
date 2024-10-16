@@ -10,7 +10,7 @@ import { PreloadAllModules, RouterLink } from '@angular/router';
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.css'
 })
-export class AccueilGlobalComponent implements OnInit
+export class AccueilComponent implements OnInit
 {
   marches!: Marche[];
   imgUrl = "https://127.0.0.1:8000/images/"
