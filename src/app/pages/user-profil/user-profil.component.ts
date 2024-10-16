@@ -18,7 +18,7 @@ export class UserProfilComponent implements OnInit {
 
   ngOnInit(): void {
     const userId = this.route.snapshot.params['id']; // Récupèrer l'ID de l'utilisateur depuis l'url
-    this.userService.getUserProfile(userId).subscribe(
+    this.userService.getUserById(userId).subscribe(
       (data: User) => {
         this.user = data;
       },

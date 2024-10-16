@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { jwtDecode } from 'jwt-decode';
@@ -57,6 +57,16 @@ export class AuthService {
       return jwtDecode(token);
     }
     return null
+  }
+
+  // Méthode pour vérifier si un utilisateur possède un id spécifique
+  getId(value: number):boolean {
+    // Vérifie si le token décodé existe et si l'utilisateur possède l'id spécifié
+    if (this.decodedToken) {
+      return this.decodedToken.id === value
+    }
+    // Retourne false si le token décodé n'existe pas ou si l'utilisateur ne possède pas l'id spécifié
+    return false
   }
 
   // Méthode pour vérifier si un utilisateur possède un rôle spécifique

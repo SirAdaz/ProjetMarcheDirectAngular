@@ -1,4 +1,14 @@
 <div class="container ac">
+    <div *ngIf="user">
+        <h1>{{ user.userName }}</h1>
+        <p>Email: {{ user.email }}</p>
+        <p>Autres informations: {{ user.tel }}</p>
+        <!-- Ajoutez d'autres propriétés de l'utilisateur à afficher -->
+    </div>
+
+    <div *ngIf="!user">
+        <p>Chargement des données...</p>
+    </div>
     <div class="container container-card">
         <div class="card d-flex flex-row align-items-center justify-content-center"
             routerLink="../../commerce/profil-commerçant">
