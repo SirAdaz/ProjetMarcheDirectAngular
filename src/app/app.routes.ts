@@ -19,25 +19,36 @@ import { UnavailableComponent } from './pages/pages-erreurs/unavailable/unavaila
 
 export const routes: Routes = 
 [
-    { path:'', redirectTo:'accueilGlobal', pathMatch: 'full'},
+    // redirection
+    { path:'', redirectTo:'accueil', pathMatch: 'full'},
 
+    // formulaires
     { path: 'login', component: LoginFormComponent },
     { path: 'register', component: RegisterFormComponent },
+
+    // pages administration
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
-    { path: 'accueilGlobal', component:AccueilComponent },
+
+    // pages global
+    { path: 'accueil', component:AccueilComponent },
     { path: 'marches', component:MarchesComponent},
     { path: 'marches/:id', component:PageMarcheComponent},
-    { path: 'commerce/accueil', component:AccueilCommerceComponent },
-    { path: 'user-profil', component: UserProfilComponent },
-    { path: 'user-command-history/:userId', component: UserCommandHistoryComponent },
-    { path: 'user-cart', component: UserCartComponent },
-    { path: 'user-comments', component: UserCommentComponent },
 
+    // pages commerces
+    { path: 'commerce/accueil', component:AccueilCommerceComponent },
+
+    // pages client
+    { path: 'user/profil', component: UserProfilComponent },
+    { path: 'user/command-history/:userId', component: UserCommandHistoryComponent },
+    { path: 'user/cart', component: UserCartComponent },
+    { path: 'user/comments', component: UserCommentComponent },
+
+    // pages legales
     { path: 'rgpd', component:RgpdComponent },
     { path: 'mention', component:MentionLegaleComponent },
-
+    
+    // pages erreurs
     { path: 'notfound', component:NotFoundComponent },
     { path: 'interdit', component:InterditComponent },
     { path: 'unavailable', component:UnavailableComponent },
-    
 ];
