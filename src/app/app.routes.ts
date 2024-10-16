@@ -16,6 +16,7 @@ import { UserCommandHistoryComponent } from './pages/pages-client/user-command-h
 import { UserCommentComponent } from './pages/pages-client/user-comment/user-comment.component';
 import { UserProfilComponent } from './pages/pages-client/user-profil/user-profil.component';
 import { UnavailableComponent } from './pages/pages-erreurs/unavailable/unavailable.component';
+import { CgvComponent } from './pages/legal/cgv/cgv.component';
 
 export const routes: Routes = 
 [
@@ -46,6 +47,7 @@ export const routes: Routes =
     // pages legales
     { path: 'rgpd', component:RgpdComponent },
     { path: 'mention', component:MentionLegaleComponent },
+    { path: 'cgv', component: CgvComponent },
     
     // pages erreurs
     { path: 'notfound', component:NotFoundComponent },
