@@ -13,11 +13,17 @@ export class HeaderComponent
 { 
     authService = inject(AuthService);
     router = inject(Router);
-    public logout(){
+    public logout()
+    {
       this.authService.logout();
       this.router.navigate(['login']);
     }
-    isLoggedIn() {
+    isLoggedIn() 
+    {
       return localStorage.getItem('isAuthenticated') === 'true';
+    }
+    isCommerceAccueil() : boolean
+    {
+        return this.router.url === '/commerce/accueil';
     }
 }
