@@ -17,13 +17,11 @@ export class LoginFormComponent {
     // Routeur injecté pour la navigation
     router = inject(Router);
   
-  
     // Formulaire de connexion protégé par le formulaire réactif
     protected loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
     })
-  
     // Méthode appelée à la soumission du formulaire
     onSubmit(){  
       if(this.loginForm.valid){
