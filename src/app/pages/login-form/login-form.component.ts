@@ -22,10 +22,6 @@ export class LoginFormComponent {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
     })
-    //Méthode pour recup l'id de l'utilisateur
-    getUserId(data: any){
-      return data.user.id;
-    }
     // Méthode appelée à la soumission du formulaire
     onSubmit(){  
       if(this.loginForm.valid){
