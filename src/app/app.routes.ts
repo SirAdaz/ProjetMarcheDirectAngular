@@ -11,6 +11,8 @@ import { RegisterFormComponent } from './pages/register-form/register-form.compo
 import { UserCommentComponent } from './pages/user-comment/user-comment.component';
 import { MarchesComponent } from './pages/marches/marches.component';
 import { PageMarcheComponent } from './pages/page-marche/page-marche.component';
+import { RgpdComponent } from './pages/legal/rgpd/rgpd.component';
+import { MentionLegaleComponent } from './pages/legal/mention-legale/mention-legale.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const routes: Routes = 
@@ -25,6 +27,11 @@ export const routes: Routes =
     { path: 'marches/:id', component:PageMarcheComponent},
     { path: 'commerce/accueil', component:AccueilCommerceComponent },
     { path: 'user-profil', component: UserProfilComponent},
+    { path: 'user-command-history/:userId', component: UserCommandHistoryComponent },
+    { path: 'user-cart', component: UserCartComponent },
+    { path: 'user-comments', component: UserCommentComponent },
+    { path: 'rgpd', component:RgpdComponent },
+    { path: 'mention', component:MentionLegaleComponent },
     { path: 'user/command-history/:userId', component: UserCommandHistoryComponent },
     { path: 'user/cart', component: UserCartComponent },
     { path: 'user/comments', component: UserCommentComponent },
