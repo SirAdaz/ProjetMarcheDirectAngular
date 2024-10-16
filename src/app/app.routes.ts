@@ -4,19 +4,19 @@ import { AccueilCommerceComponent } from './pages/accueil-commerce/accueil-comme
 import { AccueilGlobalComponent } from './pages/accueilGlobal/accueil.component';
 import { UserProfilComponent } from './pages/user-profil/user-profil.component';
 import { UserCommandHistoryComponent } from './pages/user-command-history/user-command-history.component';
-import { UserCartComponent } from './pages/user-cart/user-cart.component';
 import { AdminComponent } from './pages/admin/admin.component';
-import { LoginFormComponent } from './pages/login-form/login-form.component';
-import { RegisterFormComponent } from './pages/register-form/register-form.component';
 import { UserCommentComponent } from './pages/user-comment/user-comment.component';
 import { MarchesComponent } from './pages/marches/marches.component';
 import { PageMarcheComponent } from './pages/page-marche/page-marche.component';
 import { RgpdComponent } from './pages/legal/rgpd/rgpd.component';
 import { MentionLegaleComponent } from './pages/legal/mention-legale/mention-legale.component';
+import { LoginFormComponent } from './pages/formulaires/login-form/login-form.component';
+import { RegisterFormComponent } from './pages/formulaires/register-form/register-form.component';
+import { UserCartComponent } from './pages/pages-client/user-cart/user-cart.component';
 
 export const routes: Routes = 
 [
-    {path:'', redirectTo:'accueilGlobal', pathMatch: 'full'},
+    { path:'', redirectTo:'accueilGlobal', pathMatch: 'full'},
 
     { path: 'login', component: LoginFormComponent },
     { path: 'register', component: RegisterFormComponent },
@@ -31,6 +31,6 @@ export const routes: Routes =
     { path: 'user-cart', component: UserCartComponent },
     { path: 'user-comments', component: UserCommentComponent },
 
-    {path: 'rgpd', component:RgpdComponent},
-    {path: 'mention', component:MentionLegaleComponent},
+    { path: 'rgpd', component:RgpdComponent },
+    { path: 'mention', component:MentionLegaleComponent },
 ];

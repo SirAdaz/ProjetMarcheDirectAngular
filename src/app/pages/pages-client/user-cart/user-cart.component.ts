@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CartItem } from '../../models/cart.model';
-import { CartService } from '../../services/cart.service';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CartItem } from '../../../models/cart.model';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-user-cart',
