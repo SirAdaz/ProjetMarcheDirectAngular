@@ -1,0 +1,26 @@
+<div class="container d-flex justify-content-center align-items-center divContainer">
+    <form class="form-group card text-center" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="card-header">
+        <p class="fs-5">Inscription</p>
+      </div>
+      <div class="card-body m-3">
+        <div class="mb-3 text-start">
+          <label for="exampleInputEmail1" class="form-label">Email :</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email@example.com" formControlName="email">
+        </div>
+        <div class="mb-3 text-start">
+          <label for="exampleInputPassword1" class="form-label">Mot de passe :</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+        </div>
+        <div class="mb-3 text-start">
+            <label for="exampleInputName" class="form-label">Nom :</label>
+            <input type="text" class="form-control" id="exampleInputName" formControlName="username">
+        </div>
+        <div class="mb-3 text-start">
+            <label for="exampleInputTel" class="form-label">Tel :</label>
+            <input type="tel" class="form-control" id="exampleInputTel" formControlName="tel">
+        </div>
+        <button class="btn connection">S'inscrire</button>
+      </div>
+    </form>
+  </div>
