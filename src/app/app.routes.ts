@@ -18,6 +18,7 @@ import { UserProfilComponent } from './pages/pages-client/user-profil/user-profi
 import { UnavailableComponent } from './pages/pages-erreurs/unavailable/unavailable.component';
 import { ProduitsComponent } from './pages/produits/produits.component';
 import { CgvComponent } from './pages/legal/cgv/cgv.component';
+import { ContactFormComponent } from './pages/formulaires/contact-form/contact-form.component';
 
 export const routes: Routes = 
 [
@@ -27,6 +28,7 @@ export const routes: Routes =
     // formulaires
     { path: 'login', component: LoginFormComponent },
     { path: 'register', component: RegisterFormComponent },
+    { path: 'contact', component: ContactFormComponent },
 
     // pages administration
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
