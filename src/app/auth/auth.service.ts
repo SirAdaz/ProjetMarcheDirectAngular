@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private urlApi = "https://localhost:8000"; // URL de l'API
+  private urlApi = "http://localhost:8000"; // URL de l'API
   token = ""; // Token d'authentification
   decodedToken: any = null; // Token décodé
   

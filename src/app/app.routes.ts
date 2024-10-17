@@ -39,7 +39,7 @@ export const routes: Routes =
     { path: 'commerce/accueil', component:AccueilCommerceComponent },
 
     // pages client
-    { path: 'user/profil', component: UserProfilComponent },
+    { path: 'user/profil/:id', component: UserProfilComponent },
     { path: 'user/command-history/:userId', component: UserCommandHistoryComponent },
     { path: 'user/cart', component: UserCartComponent },
     { path: 'user/comments', component: UserCommentComponent },

@@ -16,14 +16,21 @@ export class UserProfilComponent implements OnInit {
   constructor(private userService: UserService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const userId = this.route.snapshot.params['id']; // Récupèrer l'ID de l'utilisateur depuis l'url
+    const userId = this.route.snapshot.params['id']; // Récupère l'ID de l'utilisateur depuis l'URL
+    console.log('User ID:', userId);
+
+    // Vérification token
+    const token = localStorage.getItem('token');
+    console.log('Token:', token); // Débogage
+
     this.userService.getUserProfile(userId).subscribe(
-      (data: User) => {
-        this.user = data;
-      },
-      (error) => {
-        console.error('Erreur lors de la récupération des informations de l\'utilisateur', error);
-      }
+        (data: User) => {
+            this.user = data;
+        },
+        (error) => {
+            console.error('Erreur lors de la récupération des informations de l\'utilisateur', error);
+        }
     );
-  }
+}
+
 }
