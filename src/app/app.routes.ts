@@ -16,6 +16,7 @@ import { UserCommandHistoryComponent } from './pages/pages-client/user-command-h
 import { UserCommentComponent } from './pages/pages-client/user-comment/user-comment.component';
 import { UserProfilComponent } from './pages/pages-client/user-profil/user-profil.component';
 import { UnavailableComponent } from './pages/pages-erreurs/unavailable/unavailable.component';
+import { ProduitsComponent } from './pages/produits/produits.component';
 
 export const routes: Routes = 
 [
@@ -33,6 +34,7 @@ export const routes: Routes =
     { path: 'accueil', component:AccueilComponent },
     { path: 'marches', component:MarchesComponent},
     { path: 'marches/:id', component:PageMarcheComponent},
+    { path: 'produits', component:ProduitsComponent},
 
     // pages commerces
     { path: 'commerce/accueil', component:AccueilCommerceComponent },

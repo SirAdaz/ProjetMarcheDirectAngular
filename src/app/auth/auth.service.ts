@@ -76,4 +76,12 @@ export class AuthService {
     // Retourne false si le token décodé n'existe pas ou si l'utilisateur ne possède pas le rôle spécifié
     return false;
   }
+
+  // recupère l'id de l'utilisateur connecté
+  getUserId(): string {
+    if (this.decodedToken) {
+      return this.decodedToken.sub;
+    }
+    return '';
+  }
 }
