@@ -21,6 +21,6 @@ export class UserService {
 
   // Méthode pour récupérer l'historique des commandes d'un utilisateur
   getUserCommands(userId: number): Observable<command[]> {
-    return this.http.get<command[]>(`${this.apiUrl}/${userId}/commands`);
+    return this.http.get<command[]>(`${this.apiUrl}/${userId}/user/command-history/:id`);
   }
 }
