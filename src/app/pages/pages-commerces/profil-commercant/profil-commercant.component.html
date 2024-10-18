@@ -1,7 +1,27 @@
-<div class="container">
-    <p>{{userInfo.email}}</p>
+<div class="container d-flex flex-row">
     <div class="card">
-        <img [src]="urlImg + userInfo.imageFileName" alt="">
-        <button>Modifier</button>
+        <img [src]="urlImg + userInfo.imageFileName" alt="" class="w-img">
+        <button type="button" class="btn btn-border w-100" data-bs-toggle="modal" data-bs-target="#modifImage">Modifier</button>
     </div>
 </div>
+
+<!-- Modal Modif Image-->
+<div class="modal fade" id="modifImage" tabindex="-1" aria-labelledby="modalModifImage" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier votre image</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <input type="file" (change)="onFileSelected($event)" id="imageFile" name="imageFile">
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annulé</button>
+          <button type="button" class="btn btn-primary" (click)="onUpdateImage()">Modifier</button>
+        </div>
+      </div>
+    </div>
+  </div>

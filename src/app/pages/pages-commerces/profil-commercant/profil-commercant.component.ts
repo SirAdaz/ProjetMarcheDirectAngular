@@ -12,6 +12,7 @@ import { AuthService } from '../../../auth/auth.service';
 })
 export class ProfilCommercantComponent implements OnInit {
   urlImg = "https://127.0.0.1:8000/images/";
+  selectedFile: File | null = null;
   userInfo: any = null;
 
   authService = inject(AuthService)
@@ -31,6 +32,18 @@ export class ProfilCommercantComponent implements OnInit {
           console.error('Erreur lors de la récupération des informations de l\'utilisateur', error);
         }
       );
+    }
+  }
+  // Méthode pour capturer le fichier sélectionné
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0]; // Récupère le fichier sélectionné
+  }
+
+  // Méthode pour envoyer l'image au backend
+  onUpdateImage(): void {
+    if (this.selectedFile) {
+      const formData = new FormData();
+      formData.append('imageFile', this.selectedFile);
     }
   }
 }
