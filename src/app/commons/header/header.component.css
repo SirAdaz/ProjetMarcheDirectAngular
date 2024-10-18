@@ -30,3 +30,16 @@ nav a
     border: 1px solid #83838300;
     color: #FEFAE0;
 }
+.btn-panier{
+    background-color: #132a13;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #838383;
+    color: #FEFAE0;
+    width: fit-content;
+}
+
+.btn-panier:hover {
+    background-color: #4F772D;
+}
