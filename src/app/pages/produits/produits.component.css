@@ -58,3 +58,7 @@ p
 .btn-pagination:hover{
     background-color: #4F772D;
 }
+.color-modal{
+    background-color: #FEFAE0;
+    color: #132a13;
+}
