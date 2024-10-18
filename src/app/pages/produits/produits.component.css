@@ -10,7 +10,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 90%;
+    width: 100%;
 }
 .card 
 {
@@ -61,4 +61,31 @@ p
 .color-modal{
     background-color: #FEFAE0;
     color: #132a13;
+}
+.cart-summary{
+    height: 100%;
+    overflow-y: auto; /* Activer le défilement vertical */
+    background-color: #FEFAE0;
+    overflow-x: hidden; 
+    box-sizing: border-box;
+}
+
+.btn-clear{
+    background-color: #BC4749;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #838383;
+    color: #FEFAE0;
+    width: fit-content;
+}
+.btn-clear:hover {
+    background-color: #973436;
+}
+.img-fluid{
+    border-radius: 10px;
+}
+.cart-item{
+    border-bottom: 1px solid #838383;
+    width: 100%;
 }
