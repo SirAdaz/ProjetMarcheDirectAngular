@@ -9,13 +9,13 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8000/api/users';
+  private apiUrl = 'https://localhost:8000/api/users';
 
   constructor(private http: HttpClient) { }
 
   // Méthode pour récupérer le profil utilisateur
   getUserProfile(userId: string): Observable<User> {
-    return this.http.get<User>(`http://localhost:8000/api/users/${userId}`);
+    return this.http.get<User>(`https://localhost:8000/api/users/${userId}`);
 }
 
 
