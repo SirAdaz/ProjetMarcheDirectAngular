@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -66,14 +67,6 @@ export class AuthService {
     return null
   }
 
-  getId(value: number): boolean {
-    if (this.decodedToken) {
-      console.log(this.decodedToken);
-      return this.decodedToken.id === value;
-    }
-    return false;
-  }
-
   // Méthode pour vérifier si un utilisateur possède un rôle spécifique
   getRoles(value: string): boolean {
     // Vérifie si le token décodé existe et si l'utilisateur possède le rôle spécifié
@@ -81,6 +74,18 @@ export class AuthService {
       return this.decodedToken.roles.some((role: string) => role === value)
     }
     // Retourne false si le token décodé n'existe pas ou si l'utilisateur ne possède pas le rôle spécifié
-    return false
+    return false;
+  }
+
+  // Nouvelle méthode pour récupérer les informations d'un utilisateur par son ID
+  getUserById(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.urlApi}/api/users/${userId}`);
+  }
+
+  getUserId(): number | null {
+    if (this.decodedToken && this.decodedToken.id) {
+      return this.decodedToken.id;
+    }
+    return null;
   }
 }

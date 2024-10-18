@@ -23,16 +23,30 @@ export class LoginFormComponent {
       password: new FormControl('', [Validators.required])
     })
     // Méthode appelée à la soumission du formulaire
-    onSubmit(){  
-      if(this.loginForm.valid){
-        this.auth.login(this.loginForm.value).subscribe((data: any) => {
-          localStorage.setItem('isAuthenticated', 'true');
-          this.auth.setToken("Bearer " + data.token);
-          if(this.auth.isLoggedIn()){
-            // Navigation vers la page '/admin' après une connexion réussie
-            this.router.navigate(['admin']);
-          }
-        });
+    onSubmit() {  
+      if (this.loginForm.valid) {
+          this.auth.login(this.loginForm.value).subscribe((data: any) => {
+              if (data.token) {
+                  localStorage.setItem('isAuthenticated', 'true');
+                  this.auth.setToken("Bearer " + data.token);
+  
+                  // Décodage du token pour récupérer l'ID et les rôles
+                  const payload = this.auth.decodeToken();
+                  const userId = payload.id; // Assurez-vous que l'ID est récupéré
+  
+                  if (payload.roles.includes('ROLE_ADMIN')) {
+                      this.router.navigate(['admin']);
+                  } else if (payload.roles.includes('ROLE_USER')) {
+                      this.router.navigate(['user/profil', userId]); // Inclure l'ID dans l'URL
+                  }
+              } else {
+                  console.error('Aucun token reçu');
+              }
+          }, error => {
+              console.error('Erreur de connexion:', error);
+          });
       }
-    }
+  }
+  
+
   }

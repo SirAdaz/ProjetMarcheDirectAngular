@@ -34,10 +34,10 @@ export class MarchesComponent implements AfterViewInit {
   }
 
   // Récupérer la page précédente des 'marches'
-  public getMarchesOtherPagesMoins(): void {
+  public getOtherPagesMoins(): void {
     if (this.i > 1) { // S'assurer de ne pas être à la première page
       this.i = this.i - 1; // Décrémenter l'index de la page
-      this.marchesServices.getMarchesOtherPages(this.i).subscribe((data) => {
+      this.marchesServices.getOtherPages(this.i).subscribe((data) => {
         // Mettre à jour les données des 'marches' et rafraîchir la visibilité des boutons
         this.marches = data;
         this.updateButtonVisibility();
@@ -46,8 +46,8 @@ export class MarchesComponent implements AfterViewInit {
   }
   
   // Récupérer la page suivante des 'marches'
-  public getMarchesOtherPagesPlus(): void {
-    this.marchesServices.getMarchesOtherPages(this.i + 1).subscribe((data) => {
+  public getOtherPagesPlus(): void {
+    this.marchesServices.getOtherPages(this.i + 1).subscribe((data) => {
       if (data && data.length > 0) { // S'assurer que des données existent
         this.i = this.i + 1; // Incrémenter l'index de la page
         this.marches = data;
@@ -75,7 +75,7 @@ export class MarchesComponent implements AfterViewInit {
 
     if (this.btnSuivant) {
       // Déterminer la visibilité du bouton suivant en vérifiant si les données de la page suivante existent
-      this.marchesServices.getMarchesOtherPages(this.i + 1).subscribe((data) => {
+      this.marchesServices.getOtherPages(this.i + 1).subscribe((data) => {
         this.btnSuivant!.style.display = data && data.length > 0 ? "block" : "none";
       });
     }

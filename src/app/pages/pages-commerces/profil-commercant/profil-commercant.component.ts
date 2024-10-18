@@ -1,8 +1,7 @@
-import { Component, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { User } from '../../../models/user.model';
 import { UserService } from '../../../services/user.service';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-profil-commercant',
@@ -11,13 +10,27 @@ import { UserService } from '../../../services/user.service';
   templateUrl: './profil-commercant.component.html',
   styleUrl: './profil-commercant.component.css'
 })
-export class ProfilCommercantComponent {
-
-  user!: User;
+export class ProfilCommercantComponent implements OnInit {
   urlImg = "https://127.0.0.1:8000/images/";
-  userServices = inject(UserService);
+  userInfo: any = null;
 
-  route = inject(ActivatedRoute);
-  router = inject(Router);
+  authService = inject(AuthService)
 
+  ngOnInit(): void {
+    // Récupérer l'ID de l'utilisateur connecté (décodé depuis le token)
+    const userId = this.authService.decodedToken ? this.authService.decodedToken.id : null;
+
+    if (userId !== null) {
+      // Appeler la méthode pour récupérer les informations de l'utilisateur
+      this.authService.getUserById(userId).subscribe(
+        (data) => {
+          this.userInfo = data;
+          console.log('Informations de l\'utilisateur :', this.userInfo);
+        },
+        (error) => {
+          console.error('Erreur lors de la récupération des informations de l\'utilisateur', error);
+        }
+      );
+    }
+  }
 }

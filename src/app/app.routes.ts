@@ -16,6 +16,9 @@ import { UserCommandHistoryComponent } from './pages/pages-client/user-command-h
 import { UserCommentComponent } from './pages/pages-client/user-comment/user-comment.component';
 import { UserProfilComponent } from './pages/pages-client/user-profil/user-profil.component';
 import { UnavailableComponent } from './pages/pages-erreurs/unavailable/unavailable.component';
+import { ProduitsComponent } from './pages/produits/produits.component';
+import { CgvComponent } from './pages/legal/cgv/cgv.component';
+import { ContactFormComponent } from './pages/formulaires/contact-form/contact-form.component';
 import { GestionDesCommandesComponent } from './pages/pages-commerces/gestion-des-commandes/gestion-des-commandes.component';
 import { GestionDesProduitsComponent } from './pages/pages-commerces/gestion-des-produits/gestion-des-produits.component';
 import { ProfilCommercantComponent } from './pages/pages-commerces/profil-commercant/profil-commercant.component';
@@ -28,6 +31,7 @@ export const routes: Routes =
     // formulaires
     { path: 'login', component: LoginFormComponent },
     { path: 'register', component: RegisterFormComponent },
+    { path: 'contact', component: ContactFormComponent },
 
     // pages administration
     { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
@@ -36,6 +40,7 @@ export const routes: Routes =
     { path: 'accueil', component:AccueilComponent },
     { path: 'marches', component:MarchesComponent},
     { path: 'marches/:id', component:PageMarcheComponent},
+    { path: 'produits', component:ProduitsComponent},
 
     // pages commerces
     { path: 'commerce/accueil', component:AccueilCommerceComponent },
@@ -44,22 +49,22 @@ export const routes: Routes =
     { path: 'commerce/gestion-des-commandes', component:GestionDesCommandesComponent },
 
     // pages client
-    { path: 'user/profil', component: UserProfilComponent },
-    { path: 'user/command-history/:userId', component: UserCommandHistoryComponent },
+    { path: 'user/profil/:id', component: UserProfilComponent },
+    { path: 'user/command-history/:id', component: UserCommandHistoryComponent },
     { path: 'user/cart', component: UserCartComponent },
     { path: 'user/comments', component: UserCommentComponent },
 
     // pages legales
     { path: 'rgpd', component:RgpdComponent },
     { path: 'mention', component:MentionLegaleComponent },
+    { path: 'cgv', component: CgvComponent },
     
     // pages erreurs
     { path: 'notfound', component:NotFoundComponent },
     { path: 'interdit', component:InterditComponent },
     { path: 'unavailable', component:UnavailableComponent },
-    { path: 'commerce/profil-commerçant/:id', component:ProfilCommercantComponent },
-    { path: 'commerce/gestion-des-produits', component:GestionDesProduitsComponent },
-    { path: 'commerce/gestion-des-commandes', component:GestionDesCommandesComponent },
+
+    // pages user
     { path: 'user-profil', component: UserProfilComponent},
     { path: 'user-command-history/:userId', component: UserCommandHistoryComponent },
     { path: 'user-cart', component: UserCartComponent },

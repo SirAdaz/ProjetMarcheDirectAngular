@@ -18,12 +18,13 @@ export class UserService {
   }
 
   // Méthode pour récupérer le profil utilisateur
-  getUserById(userId: number): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/${userId}`);
-  };
+  getUserProfile(userId: string): Observable<User> {
+    return this.http.get<User>(`https://localhost:8000/api/users/${userId}`);
+}
+
 
   // Méthode pour récupérer l'historique des commandes d'un utilisateur
   getUserCommands(userId: number): Observable<command[]> {
-    return this.http.get<command[]>(`${this.apiUrl}/${userId}/commands`);
-  };
+    return this.http.get<command[]>(`${this.apiUrl}/${userId}/user/command-history/:id`);
+  }
 }

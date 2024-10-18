@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../../auth/auth.service';
 
@@ -11,13 +11,11 @@ import { AuthService } from '../../../auth/auth.service';
 })
 export class AccueilCommerceComponent{
 
-  constructor(private authService: AuthService) {}
-
+  authService = inject(AuthService);
+  
   ngOnInit(): void {
-    // Remplacez 123 par l'ID que vous voulez vérifier
-    const testId = 12;
-    const hasId = this.authService.getId(testId);
-
-    console.log('L\'utilisateur connecté a-t-il l\'ID', testId, '? :', hasId);
-  }
+    const hasId = this.authService.getUserId();
+    
+    console.log('L\'utilisateur connecté a-t-il l\'ID', hasId);
+  };
 }
