@@ -8,5 +8,8 @@ export interface User {
     nameBusiness: string;
     stats: [] ;
     imageFileName: string;
+    roles: [];
+    descriptionCommerce: string;
+    numSiret: string;
   }
   
