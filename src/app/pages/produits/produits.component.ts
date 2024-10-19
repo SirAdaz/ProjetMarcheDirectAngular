@@ -1,4 +1,4 @@
-import { Component, SimpleChanges } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { ProduitsService } from '../../services/produits.service';
 import Produit from '../../models/produit.model';
 import { RouterLink } from '@angular/router';
@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './produits.component.html',
   styleUrl: './produits.component.css'
 })
-export class ProduitsComponent {
+export class ProduitsComponent implements OnInit {
   // Tableau pour stocker la liste complète des produits
   maxProduits!: Produit[];
   // Tableau pour stocker les produits de la page actuelle
@@ -53,7 +53,8 @@ export class ProduitsComponent {
       quantity: this.selectedQuantity,
       price: item.prix,
       imageFileName: item.imageFileName,
-      productName: item.productName
+      productName: item.productName,
+      commercant: item.userProduct.id
     };
 
     // Récupérer le panier existant depuis le local storage
@@ -169,6 +170,7 @@ export class ProduitsComponent {
     this.ProduitsServices.getProduits().subscribe((data) => {
       // Définir les données initiales des produits
       this.produits = data;
+      
       // Mettre à jour la visibilité des boutons en fonction des données initiales
       this.updateButtonVisibility();
     });

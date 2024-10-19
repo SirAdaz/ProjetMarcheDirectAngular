@@ -1,5 +1,6 @@
 import { DecimalPipe } from "@angular/common";
 import Format from "./format.models";
+import { User } from "./user.model";
 
 // Model des produits
 export default interface Produit {
@@ -11,4 +12,5 @@ export default interface Produit {
     stock: number;
     imageFileName: string;
     description: string;
+    userProduct: User;
   }
