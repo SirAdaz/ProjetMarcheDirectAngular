@@ -13,4 +13,3 @@ export default interface User {
     imageFileName: string;
     commercant_marche : Marche[];
   }
-  

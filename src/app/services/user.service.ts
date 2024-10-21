@@ -12,6 +12,10 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  getUserProfileTest(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
+  }
+
   // Méthode pour récupérer le profil utilisateur
   getUserProfile(userId: number): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/${userId}`);
