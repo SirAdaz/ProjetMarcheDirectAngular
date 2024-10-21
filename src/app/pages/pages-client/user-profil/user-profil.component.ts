@@ -20,7 +20,6 @@ export class UserProfilComponent implements OnInit {
 
     // Vérification token
     const token = localStorage.getItem('token');
-    console.log('Token:', token); // Débogage
 
     this.userService.getUserProfile(userId).subscribe(
         (data: User) => {
