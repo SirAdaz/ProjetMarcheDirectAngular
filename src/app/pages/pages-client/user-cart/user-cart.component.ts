@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { CartItem } from '../../../models/cart.model';
-import Produit from '../../../models/produit.model';
 import { UserService } from '../../../services/user.service';
-import { Observable } from 'rxjs';
-import { User } from '../../../models/user.model';
+import { AuthService } from '../../../auth/auth.service';
+import { CommandeService } from '../../../services/commande.service';
+import User from '../../../models/user.model';
 
 @Component({
   selector: 'app-user-cart',
@@ -19,12 +18,12 @@ export class UserCartComponent implements OnInit{
   cartItems: any[] = [];
 
   // Tableau pour stocker les commercants
-  commercants: any[] = [];
+  commercants: User[] = [];
 
   // URL de base pour les images
   urlImg = "https://127.0.0.1:8000/images/";
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private authService: AuthService, private router: Router, private commandeService: CommandeService) {}
 
   // Fonction pour recupérer les articles du panier depuis le local storage
   getCartItems(): any[] {
@@ -125,15 +124,78 @@ getUniqueCommercants() {
     commercantIds.forEach((id) => {
       this.fetchCommercantInfo(id).subscribe((info) => {
         this.commercants.push(info);
-        console.log('Commerçant ajouté:', info);
+        console.log('Commerçant ajouté : ', info);
+        if (this.commercants.length > 0) {
+          console.log(this.commercants[0]); // Afficher dès que le premier commerçant est ajouté
+        }
       });
     });
 }
 
-fetchCommercantInfo(commercantId: number) {
-  // Exemple : appeler un service qui récupère les informations du commerçant
-  return this.userService.getUserProfile(commercantId);
-}
+  fetchCommercantInfo(commercantId: number) {
+    // appeler un service qui récupère les informations du commerçant
+    return this.userService.getUserProfile(commercantId);
+  }
+
+  // Création de la commande
+  newCommande() {
+    console.log('Commande button clicked');
+  
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/login']);
+      return;
+    }
+  
+    const userId = this.authService.getUserId();
+    if (!userId) {
+      return;
+    }
+  
+  
+    const cart = this.getCartItems();
+  
+    const groupedItems = this.groupItemsByMerchant(cart);
+  
+    for (const [merchantId, items] of Object.entries(groupedItems)) {
+      const orderData = {
+        userId,
+        merchantId,
+        items: items.map(item => ({
+          productId: item.id,
+          quantity: item.quantity,
+          price: item.price
+        }))
+      };
+      console.log('Creating order with data:', orderData);
+      this.createOrder(orderData);
+    }
+  
+    this.clearCart();
+  }
+
+  // Méthode pour grouper les articles par commercant
+  groupItemsByMerchant(cart: any[]) {
+    return cart.reduce((acc: { [key: string]: any[] }, item) => {
+      if (!acc[item.commercant]) {
+        acc[item.commercant] = [];
+      }
+      acc[item.commercant].push(item);
+      return acc;
+    }, {});
+  }
+
+  // Méthode pour créer une commande
+  createOrder(orderData: any) {
+    this.commandeService.createCommande(orderData).subscribe({
+      next: (commande) => {
+        console.log('Commande créée avec succès:', commande);
+      },
+      error: (error) => {
+        console.error('Erreur lors de la création de la commande:', error);
+      }
+    });
+  }
+
   ngOnInit(): void {
     // Récupérer et définir les articles du panier depuis le local storage
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
