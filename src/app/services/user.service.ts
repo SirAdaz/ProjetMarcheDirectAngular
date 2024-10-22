@@ -18,17 +18,12 @@ export class UserService {
 
   // Méthode pour récupérer le profil utilisateur
   getUserProfile(userId: string): Observable<User> {
-    return this.http.get<User>(`https://localhost:8000/api/users/${userId}`);
+    return this.http.get<User>(`${this.apiUrl}/${userId}`);
   }
 
 
   // Méthode pour récupérer l'historique des commandes d'un utilisateur
   getUserCommands(userId: number): Observable<command[]> {
     return this.http.get<command[]>(`${this.apiUrl}/${userId}/user/command-history/:id`);
-  }
-
-  // Méthode pour mettre à jour l'image de l'utilisateur
-  updateUserImage(userId: number, formData: FormData): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/${userId}/update-image`, formData);
   }
 }
