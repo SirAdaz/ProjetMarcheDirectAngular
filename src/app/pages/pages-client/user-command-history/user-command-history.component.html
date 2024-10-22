@@ -21,13 +21,7 @@
     <div class="row">
       <div class="col-md-8 offset-md-2">
         <h2>Retrouvez votre Historique de Commandes</h2>
-        <div *ngIf="commands.length === 0">Aucune commande trouvée.</div>
-        <div *ngFor="let command of commands" class="card mt-3">
           <div class="card-body">
-            <p><strong>Produit commandé:</strong> {{ command.produitCommande }}</p>
-            <p><strong>Date de commande:</strong> {{ command.dateCommande | date: 'dd/MM/yyyy' }}</p>
-            <p><strong>Heure de récupération:</strong> {{ command.hourRecup }}</p>
-            <p><strong>État de la commande:</strong> {{ command.etatId }}</p>
           </div>
         </div>
       </div>

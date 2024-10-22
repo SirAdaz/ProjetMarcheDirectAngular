@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
-import { User } from '../../../models/user.model';
 import { UserService } from '../../../services/user.service';
+import User from '../../../models/user.model';
 
 @Component({
   selector: 'app-user-profil',
@@ -20,7 +20,6 @@ export class UserProfilComponent implements OnInit {
 
     // Vérification token
     const token = localStorage.getItem('token');
-    console.log('Token:', token); // Débogage
 
     this.userService.getUserProfile(userId).subscribe(
         (data: User) => {
