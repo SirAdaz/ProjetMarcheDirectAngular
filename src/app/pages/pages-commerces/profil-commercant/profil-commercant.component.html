@@ -1,48 +1,50 @@
 <div class="container d-flex flex-row">
     <div class="card me-5 mt-5 card-image">
-        <img [src]="urlImg + userInfo.imageFileName" alt="" class="w-img">
-        <button type="button" class="btn btn-border w-100" (click)="openModal()">Modifier</button>
+      <img [src]="urlImg + userInfo?.imageFileName" alt="" class="w-img">
+      <button type="button" class="btn btn-border w-100" (click)="openModal()">Modifier</button>
     </div>
-
-    <!-- Modal Modif Image-->
+  
+    <!-- Modal Modif Image -->
     <div class="modal fade" id="modifImage" tabindex="-1" aria-labelledby="modalModifImage" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier votre image</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <input type="file" (change)="onFileSelected($event)" id="imageFile" name="imageFile">
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annulé</button>
-                    <button type="button" class="btn btn-primary" (click)="onUpdateImage()">Modifier</button>
-                </div>
-            </div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier votre image</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <input type="file" (change)="onFileSelected($event)" id="imageFile" name="imageFile">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annulé</button>
+            <button type="button" class="btn btn-primary" (click)="onUpdateImage()">Modifier</button>
+          </div>
         </div>
+      </div>
     </div>
-
+  
+    <!-- Autres informations sur l'utilisateur -->
     <div class="card me-5 mt-5">
-        <div class="text-start d-flex flex-column text-card">
-            <p *ngIf="userInfo?.dateDeCreation">Date de création : {{ userInfo.dateDeCreation }}</p>
-            <p><strong>Nombres de commentaires: </strong>7</p>
-            <p><strong>Moyen d'évaluation: </strong> * * * * *</p>
-            <p><strong>Nombres de commande totales: </strong>500</p>
-        </div>
-        <button class="btn btn-border w-100 disable">Informations</button>
+      <div class="text-start d-flex flex-column text-card">
+        <p *ngIf="userInfo?.dateDeCreation">Date de création : {{ userInfo.dateDeCreation }}</p>
+        <p><strong>Nombres de commentaires: </strong>7</p>
+        <p><strong>Moyenne d'évaluation: </strong> * * * * *</p>
+        <p><strong>Nombre de commandes totales: </strong>500</p>
+      </div>
+      <button class="btn btn-border w-100 disable">Informations</button>
     </div>
-
+  
     <div class="card me-5 mt-5 card-info-perso">
-        <div class="text-start d-flex flex-column text-card">
-            <p><strong>Email: </strong>{{userInfo.email}}</p>
-            <p><strong>Mot de passe: </strong>********</p>
-            <p><strong>N° Siret: </strong>{{userInfo.numSiret}}</p>
-            <p><strong>Nom du stand: </strong>{{userInfo.nameBusiness}}</p>
-            <p><strong>Numéro tel: </strong>{{userInfo.tel}}</p>
-        </div>
-        <button class="btn btn-border w-100">Changer les informations</button>
+      <div class="text-start d-flex flex-column text-card">
+        <p><strong>Email: </strong>{{userInfo?.email}}</p>
+        <p><strong>Mot de passe: </strong>********</p>
+        <p><strong>N° Siret: </strong>{{userInfo?.numSiret}}</p>
+        <p><strong>Nom du stand: </strong>{{userInfo?.nameBusiness}}</p>
+        <p><strong>Numéro tel: </strong>{{userInfo?.tel}}</p>
+      </div>
+      <button class="btn btn-border w-100">Changer les informations</button>
     </div>
-</div>
+  </div>
+  

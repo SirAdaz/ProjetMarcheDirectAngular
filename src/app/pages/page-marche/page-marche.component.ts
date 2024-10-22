@@ -13,7 +13,6 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 export class PageMarcheComponent implements OnInit
 {
   marche !: Marche;
-
   urlImg = "https://127.0.0.1:8000/images/";
 
   marcheServices = inject(MarchesService)
@@ -33,6 +32,11 @@ export class PageMarcheComponent implements OnInit
     {
       this.subscribeMarche(+id)  
     }
+  }
+
+  removeDivTags(text: string): string 
+  {
+    return text.replace(/<\/?[^>]+(>|$)/g, '').replace(/&nbsp;/g, ' ');
   }
 
   ngOnInit(): void 

@@ -4,6 +4,7 @@ import { AuthService } from '../../../auth/auth.service';
 import { DateFormatPipe } from '../../../pipe/date-format.pipe';
 import { NgIf } from '@angular/common';
 import { UserService } from '../../../services/user.service';
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-profil-commercant',
@@ -14,8 +15,8 @@ import { UserService } from '../../../services/user.service';
 })
 export class ProfilCommercantComponent implements OnInit {
   urlImg = "https://127.0.0.1:8000/images/";
+  userInfo: any;
   selectedFile: File | null = null;
-  userInfo: any = null;
   selectedItem: any;
 
   authService = inject(AuthService)
@@ -38,43 +39,38 @@ export class ProfilCommercantComponent implements OnInit {
     }
   }
 
-  // Méthode pour capturer le fichier sélectionné
-  onFileSelected(event: any): void {
-    this.selectedFile = event.target.files[0]; // Récupère le fichier sélectionné
-  }
-
-  openModal() {
+  openModal(): void {
     const modalElement = document.getElementById('modifImage');
-    const modal = new (window as any).bootstrap.Modal(modalElement);  // Utiliser Bootstrap via CDN
-    modal.show();
+    if (modalElement) {
+      const modal = new bootstrap.Modal(modalElement);
+      modal.show();
+    }
   }
 
-  // Méthode pour envoyer l'image au backend
-  modifImage(): void {
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+  }
+
+  onUpdateImage(): void {
     if (this.selectedFile) {
       const formData = new FormData();
-      formData.append('file', this.selectedFile); // Ajouter le fichier sélectionné au formData
+      formData.append('file', this.selectedFile, this.selectedFile.name);
 
-      // Appeler le service pour envoyer le fichier au backend
-      this.userService.updateUserImage(this.userInfo.id, formData, this.selectedItem).subscribe(
-        (response) => {
-          console.log('Image mise à jour avec succès !', response);
+      this.userService.uploadImage(this.authService.decodedToken.id, formData).subscribe({
+        next: (response) => {
+          console.log('Upload réussi', response);
+          this.userInfo.imageFileName = response.filename;
+          // Fermer la modal après la modification
+          const modalElement = document.getElementById('modifImage');
+          if (modalElement) {
+            const modal = new bootstrap.Modal(modalElement);
+            modal.hide();
+          }
         },
-        (error) => {
-          console.error('Erreur lors de l\'upload de l\'image', error);
+        error: (error) => {
+          console.error('Erreur lors de l\'upload', error);
         }
-      );
-    } else {
-      console.error('Aucun fichier sélectionné.');
+      });
     }
   }
-
-  onUpdateImage() {
-    if (this.selectedFile) {
-      this.modifImage(); // Appeler la méthode pour uploader l'image
-    } else {
-      console.error('Aucun fichier sélectionné pour la mise à jour.');
-    }
-  }
-
 }
