@@ -11,5 +11,8 @@ export default interface User {
     nameBusiness: string;
     stats: [] ;
     imageFileName: string;
+    roles: [];
+    descriptionCommerce: string;
+    numSiret: string;
     commercant_marche : Marche[];
   }
