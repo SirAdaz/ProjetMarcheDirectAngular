@@ -23,7 +23,7 @@ export class MarchesService {
   {
     return this.http.get<Marche[]>(`${this.urlApi}/marches?itemsPerPage=3`)
   }
-  // Méthode pour récupérer les autres pages des auteurs
+  // Méthode pour récupérer les autres pages des marchés
   getOtherPages(i: number): Observable<Marche[]> {
     return this.http.get<Marche[]>(`${this.urlApi}/marches?itemsPerPage=6&page=${i}`);
   }

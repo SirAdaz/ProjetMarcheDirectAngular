@@ -19,6 +19,9 @@ import { UnavailableComponent } from './pages/pages-erreurs/unavailable/unavaila
 import { ProduitsComponent } from './pages/produits/produits.component';
 import { CgvComponent } from './pages/legal/cgv/cgv.component';
 import { ContactFormComponent } from './pages/formulaires/contact-form/contact-form.component';
+import { GestionDesCommandesComponent } from './pages/pages-commerces/gestion-des-commandes/gestion-des-commandes.component';
+import { GestionDesProduitsComponent } from './pages/pages-commerces/gestion-des-produits/gestion-des-produits.component';
+import { ProfilCommercantComponent } from './pages/pages-commerces/profil-commercant/profil-commercant.component';
 
 export const routes: Routes = 
 [
@@ -41,6 +44,9 @@ export const routes: Routes =
 
     // pages commerces
     { path: 'commerce/accueil', component:AccueilCommerceComponent },
+    { path: 'commerce/profil-commerçant', component:ProfilCommercantComponent },
+    { path: 'commerce/gestion-des-produits', component:GestionDesProduitsComponent },
+    { path: 'commerce/gestion-des-commandes', component:GestionDesCommandesComponent },
 
     // pages client
     { path: 'user/profil/:id', component: UserProfilComponent },
@@ -57,4 +63,10 @@ export const routes: Routes =
     { path: 'notfound', component:NotFoundComponent },
     { path: 'interdit', component:InterditComponent },
     { path: 'unavailable', component:UnavailableComponent },
+
+    // pages user
+    { path: 'user-profil', component: UserProfilComponent},
+    { path: 'user-command-history/:userId', component: UserCommandHistoryComponent },
+    { path: 'user-cart', component: UserCartComponent },
+    { path: 'user-comments', component: UserCommentComponent },
 ];
