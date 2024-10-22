@@ -10,7 +10,9 @@ import Commande from '../models/command.model';
 })
 export class UserService {
   private apiUrl = 'https://localhost:8000/api/users';
+  private commandUrl = 'https://localhost:8000/api/commandes';
   private shortApiUrl = 'https://localhost:8000/api';
+
   constructor(private http: HttpClient) { }
 
   getUserProfileTest(): Observable<any> {

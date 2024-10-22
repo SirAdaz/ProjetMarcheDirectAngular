@@ -1,27 +1,27 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
-import { AccueilCommerceComponent } from './pages/pages-commerces/accueil-commerce/accueil-commerce.component';
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { AdminComponent } from './pages/admin/admin.component';
-import { MarchesComponent } from './pages/marches/marches.component';
-import { PageMarcheComponent } from './pages/page-marche/page-marche.component';
-import { RgpdComponent } from './pages/legal/rgpd/rgpd.component';
-import { MentionLegaleComponent } from './pages/legal/mention-legale/mention-legale.component';
+import { ContactFormComponent } from './pages/formulaires/contact-form/contact-form.component';
 import { LoginFormComponent } from './pages/formulaires/login-form/login-form.component';
 import { RegisterFormComponent } from './pages/formulaires/register-form/register-form.component';
+import { CgvComponent } from './pages/legal/cgv/cgv.component';
+import { MentionLegaleComponent } from './pages/legal/mention-legale/mention-legale.component';
+import { RgpdComponent } from './pages/legal/rgpd/rgpd.component';
+import { MarchesComponent } from './pages/marches/marches.component';
+import { PageMarcheComponent } from './pages/page-marche/page-marche.component';
 import { UserCartComponent } from './pages/pages-client/user-cart/user-cart.component';
-import { NotFoundComponent } from './pages/pages-erreurs/not-found/not-found.component';
-import { InterditComponent } from './pages/pages-erreurs/interdit/interdit.component';
 import { UserCommandHistoryComponent } from './pages/pages-client/user-command-history/user-command-history.component';
 import { UserCommentComponent } from './pages/pages-client/user-comment/user-comment.component';
 import { UserProfilComponent } from './pages/pages-client/user-profil/user-profil.component';
-import { UnavailableComponent } from './pages/pages-erreurs/unavailable/unavailable.component';
-import { ProduitsComponent } from './pages/produits/produits.component';
-import { CgvComponent } from './pages/legal/cgv/cgv.component';
-import { ContactFormComponent } from './pages/formulaires/contact-form/contact-form.component';
+import { AccueilCommerceComponent } from './pages/pages-commerces/accueil-commerce/accueil-commerce.component';
 import { GestionDesCommandesComponent } from './pages/pages-commerces/gestion-des-commandes/gestion-des-commandes.component';
 import { GestionDesProduitsComponent } from './pages/pages-commerces/gestion-des-produits/gestion-des-produits.component';
 import { ProfilCommercantComponent } from './pages/pages-commerces/profil-commercant/profil-commercant.component';
+import { InterditComponent } from './pages/pages-erreurs/interdit/interdit.component';
+import { NotFoundComponent } from './pages/pages-erreurs/not-found/not-found.component';
+import { UnavailableComponent } from './pages/pages-erreurs/unavailable/unavailable.component';
+import { ProduitsComponent } from './pages/produits/produits.component';
 
 export const routes: Routes = 
 [
@@ -50,7 +50,7 @@ export const routes: Routes =
 
     // pages client
     { path: 'user/profil/:id', component: UserProfilComponent },
-    { path: 'user/command-history/:id', component: UserCommandHistoryComponent },
+    { path: 'user/:id/command-history', component: UserCommandHistoryComponent },
     { path: 'user/cart', component: UserCartComponent },
     { path: 'user/comments', component: UserCommentComponent },
 
@@ -66,7 +66,7 @@ export const routes: Routes =
 
     // pages user
     { path: 'user-profil', component: UserProfilComponent},
-    { path: 'user-command-history/:userId', component: UserCommandHistoryComponent },
+    { path: 'user/:id/command-history', component: UserCommandHistoryComponent },
     { path: 'user-cart', component: UserCartComponent },
     { path: 'user-comments', component: UserCommentComponent },
 ];
