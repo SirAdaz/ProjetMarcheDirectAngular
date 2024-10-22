@@ -83,3 +83,9 @@ h1
 {
     text-align: center;
 }
+.tout-commercant 
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
