@@ -10,6 +10,7 @@ import { User } from '../models/user.model';
 })
 export class UserService {
   private apiUrl = 'https://localhost:8000/api/users';
+  private commandUrl = 'https://localhost:8000/api/commandes';
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +26,6 @@ export class UserService {
 
   // Méthode pour récupérer l'historique des commandes d'un utilisateur
   getUserCommands(userId: number): Observable<command[]> {
-    return this.http.get<command[]>(`${this.apiUrl}/${userId}/user/command-history/:id`);
+    return this.http.get<command[]>(`${this.commandUrl}/${userId}`);
   }
 }

@@ -19,12 +19,13 @@ export class UserCommandHistoryComponent implements OnInit {
   constructor(private userService: UserService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const userId = this.route.snapshot.params['id']; // Récupération de l'id dans l'url
+    const userId = +this.route.snapshot.params['id']; // Récupération de l'id dans l'url 
     if (!userId) {
       console.error('L\'ID de l\'utilisateur est manquant');
       return;
     }
-  
+
+    // Récupération des commandes de l'utilisateur
     this.userService.getUserCommands(userId).subscribe(
       (commands: command[]) => {
         this.commands = commands;
@@ -33,6 +34,15 @@ export class UserCommandHistoryComponent implements OnInit {
         console.error('Erreur lors de la récupération des commandes de l\'utilisateur', error);
       }
     );
+
+    // Récupération des informations de l'utilisateur
+    this.userService.getUserProfile(userId.toString()).subscribe(
+      (user: User) => {
+        this.user = user;
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération du profil de l\'utilisateur', error);
+      }
+    );
   }
-  
 }
