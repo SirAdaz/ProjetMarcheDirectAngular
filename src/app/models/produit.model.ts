@@ -1,4 +1,3 @@
-import { DecimalPipe } from "@angular/common";
 import Format from "./format.models";
 
 // Model des produits
