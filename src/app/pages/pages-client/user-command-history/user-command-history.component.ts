@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { command } from '../../../models/command.model';
-import { User } from '../../../models/user.model';
 import { UserService } from '../../../services/user.service';
+import User from '../../../models/user.model';
 
 @Component({
   selector: 'app-user-command-history',
@@ -13,36 +12,11 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./user-command-history.component.css']
 })
 export class UserCommandHistoryComponent implements OnInit {
-  commands: command[] = []; // Tableau pour stocker les commandes
   user: User | undefined;
 
   constructor(private userService: UserService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const userId = +this.route.snapshot.params['id']; // Récupération de l'id dans l'url 
-    if (!userId) {
-      console.error('L\'ID de l\'utilisateur est manquant');
-      return;
     }
 
-    // Récupération des commandes de l'utilisateur
-    this.userService.getUserCommands(userId).subscribe(
-      (commands: command[]) => {
-        this.commands = commands;
-      },
-      (error) => {
-        console.error('Erreur lors de la récupération des commandes de l\'utilisateur', error);
-      }
-    );
-
-    // Récupération des informations de l'utilisateur
-    this.userService.getUserProfile(userId.toString()).subscribe(
-      (user: User) => {
-        this.user = user;
-      },
-      (error) => {
-        console.error('Erreur lors de la récupération du profil de l\'utilisateur', error);
-      }
-    );
-  }
 }
