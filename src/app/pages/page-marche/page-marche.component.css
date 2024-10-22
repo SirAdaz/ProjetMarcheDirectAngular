@@ -1,55 +1,85 @@
-.box-unMarché 
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 40px;
-    height: 75vh;
-}
 .card 
 {
+    margin: 15px;
     border-radius: 20px;
     background-color: #fefae0;
-    display: flex;
-    flex-direction: row;
     border-color: #838383;
-    width: 1500px;
+    padding: 15px;
 }
+
 .image-text 
 {
     display: flex;
     flex-direction: row;
 }
-img
+.image-marche 
 {
+    background-size: cover;
+    background-position: center;
     border-radius: 10px;
-    max-width: 800px;
-    margin: 30px 0 30px 30px;
+    width: 90%;
+    margin: 0;
 }
 p
 {
     margin: 0;
 }
+.marche-description 
+{
+    display: flex;
+    flex-direction: row;
+}
 .card-text 
 {
-    text-align: center;
+    display: flex;
+    margin: 10px;
 }
 h1 
 {
-    border-bottom: #838383 solid 1px;
+    text-align: center;
 }
-h3 
-{
-    margin: 0;
-}
-.commercant-note 
+.lieu-marche 
 {
     text-align: center;
-    border-bottom: #838383 solid 1px;
-    border-top: #838383 solid 1px;
 }
-.commercant-description 
+.info-marche 
 {
-    border-left: #838383 solid 1px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-right: 10px;
+    flex: 1;
+    border-right: #838383 solid 1px;
 }
-
+.jours 
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding-left: 10px;
+}
+.carte 
+{
+    text-decoration: none;
+    width: 25rem;
+    height: 15rem;
+    background-color: #FEFAE0;
+    padding: 7px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(79, 79, 79, 0.5);
+    margin: 20px 10px;
+}
+.image-commercant 
+{
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    height: 150px;
+    width: 100%;
+    margin: 0;
+}
+.commercant-text 
+{
+    text-align: center;
+}

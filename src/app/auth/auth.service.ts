@@ -1,16 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
+import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private urlApi = "http://localhost:8000"; // URL de l'API
+  private urlApi = "https://localhost:8000"; // URL de l'API
   token = ""; // Token d'authentification
   decodedToken: any = null; // Token décodé
-  
+
   constructor(private http: HttpClient) {
     // Récupère le token stocké dans le localStorage au démarrage
     const storedToken = localStorage.getItem('authToken');
@@ -58,25 +59,29 @@ export class AuthService {
     return localStorage.getItem('isAuthenticated') === 'true';
   }
 
-  // Décode le token actuel
   decodeToken(): any {
-    const token = this.getToken();
-    if(token) {
+    const token = this.getToken()
+    if (token) {
       return jwtDecode(token);
     }
-    return null;
-  } 
+    return null
+  }
 
-  // Vérifie si un utilisateur possède un rôle spécifique
+  // Méthode pour vérifier si un utilisateur possède un rôle spécifique
   getRoles(value: string): boolean {
     // Vérifie si le token décodé existe et si l'utilisateur possède le rôle spécifié
     if (this.decodedToken) {
-      return this.decodedToken.roles.some((role: string) => role === value);
+      return this.decodedToken.roles.some((role: string) => role === value)
     }
     // Retourne false si le token décodé n'existe pas ou si l'utilisateur ne possède pas le rôle spécifié
     return false;
   }
-    
+
+  // Nouvelle méthode pour récupérer les informations d'un utilisateur par son ID
+  getUserById(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.urlApi}/api/users/${userId}`);
+  }
+
   getUserId(): number | null {
     if (this.decodedToken && this.decodedToken.id) {
       return this.decodedToken.id;
