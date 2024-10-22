@@ -17,7 +17,6 @@ export class UserProfilComponent implements OnInit {
 
   ngOnInit(): void {
     const userId = this.route.snapshot.params['id']; // Récupère l'ID de l'utilisateur depuis l'URL
-    console.log('User ID:', userId);
 
     // Vérification token
     const token = localStorage.getItem('token');

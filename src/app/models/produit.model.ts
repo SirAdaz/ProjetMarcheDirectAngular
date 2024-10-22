@@ -10,4 +10,5 @@ export default interface Produit {
     disponible: boolean;
     stock: number;
     imageFileName: string;
+    description: string;
   }

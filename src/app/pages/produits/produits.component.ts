@@ -22,8 +22,21 @@ export class ProduitsComponent {
   btnPrecedent!: HTMLElement | null;
   btnSuivant!: HTMLElement | null;
 
+  // selectedQuantity pour gérer le prix dans la modal
+  selectedQuantity: number = 1;
+
   // Injection du MarchesService pour communiquer avec l'API backend
   constructor(private ProduitsServices: ProduitsService) {}
+
+  // removeDivTags pour supprimer les balises HTML dans la description
+  removeDivTags(text: string): string {
+    return text.replace(/<\/?[^>]+(>|$)/g, '').replace(/&nbsp;/g, ' ');
+  }
+
+  // Fonction pour mutiplier le prix par rapport au select
+  changePrice(event: any) {
+    this.selectedQuantity = Number(event.target.value);
+  }
 
   // Appelé après l'initialisation de la vue
   ngAfterViewInit(): void {
