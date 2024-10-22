@@ -1,5 +1,5 @@
 import Jours from "./jours.models";
-import { User } from "./user.model";
+import User from "./user.model";
 
 export default interface Marche 
 {
@@ -10,5 +10,5 @@ export default interface Marche
     imageFileName: string;
     description: Text;
     days: Jours [];
-    commercant_marche: User [];
+    commercant_marche: User[];
 }
