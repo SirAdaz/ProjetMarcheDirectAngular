@@ -10,5 +10,5 @@ export default interface Marche
     imageFileName: string;
     description: Text;
     days: Jours [];
-    commercant_marche: User [];
+    commercant_marche: User[];
 }
