@@ -48,7 +48,7 @@ export class ProfilCommercantComponent implements OnInit {
   }
 
   openModalInfo(): void {
-    const modalElement = document.getElementById('modifImage');
+    const modalElement = document.getElementById('modifInfo');
     if (modalElement) {
       const modal = new bootstrap.Modal(modalElement);
       modal.show();

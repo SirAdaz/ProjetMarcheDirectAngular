@@ -49,7 +49,7 @@
     </div>
     
     <!-- Modal Modif Image -->
-    <div class="modal fade" id="modifImage" tabindex="-1" aria-labelledby="modalModifImage" aria-hidden="true">
+    <div class="modal fade" id="modifInfo" tabindex="-1" aria-labelledby="modalModifInfo" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -58,7 +58,7 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <input type="file" (change)="onFileSelected($event)" id="imageFile" name="imageFile">
+                        <input type="text" (change)="onFileSelected($event)" id="imageFile" name="imageFile">
                     </form>
                 </div>
                 <div class="modal-footer">
