@@ -1,13 +1,14 @@
 import Etat from "./etat.model";
+import Produit from "./produit.model";
+import ProduitCommande from "./produitCommande.mode";
+import User from "./user.model";
 
-// model pour la commande
+// Modèle pour la commande
 export default interface Commande {
-    id: number;
-    produitCommande: number;
-    dateCommande: Date;
-    hourRecup: string;
-    etats: Etat[];
-    commercant: number;
-    user: number;
-  }
+  id?: number;
+  produits_commande: ProduitCommande[];
+  etat: Etat;
+  UserCommande: User[];
+  produits: Produit[];
+}
   
