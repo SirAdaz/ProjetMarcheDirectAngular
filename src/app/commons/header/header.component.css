@@ -3,6 +3,11 @@ nav
     background-color: #132a13 !important;
 
 }
+.navbar-toggler
+{
+    background-color: #FEFAE0;
+    color: #FEFAE0;
+}
 .navbar-brand 
 {
     height: 60px;

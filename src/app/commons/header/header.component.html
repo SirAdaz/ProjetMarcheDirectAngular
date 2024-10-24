@@ -56,8 +56,10 @@
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
-        </form> 
-        @if (isLoggedIn()){
+        </form>
+        
+        @if (isLoggedIn())
+        {        
           <button class="btn-deconnexion" type="submit" (click)="logout()">Se déconnecter</button>
         } @else {
           <button class=" btn-connexion" type="submit" routerLink="login">Se connecter</button>
