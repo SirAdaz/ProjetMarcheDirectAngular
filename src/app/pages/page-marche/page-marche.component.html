@@ -27,7 +27,7 @@
         <div class="tout-commercant">
             @for (commercant of marche.commercant_marche; track $index) 
             {
-                <div class="carte">
+                <div class="carte" routerLink="../../marchants/{{commercant.id}}">
                     <div class="image-commercant" [style.backgroundImage]="'url(' + urlImg + commercant.imageFileName + ')'"></div>
                         <div class="card-body">
                             <h5 class="commercant-text">{{commercant.nameBusiness}}</h5>
