@@ -43,3 +43,93 @@ nav a
 .btn-panier:hover {
     background-color: #4F772D;
 }
+/* Style de la boîte de recherche */
+.search-container {
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  min-width: 250px; /* Limite de largeur */
+  border: 1px solid #4F772D; /* Bordure vert foncé */
+  border-radius: 4px;
+  font-size: 16px;
+  color: #132A13; /* Texte noir/vert */
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #90A955; /* Bordure verte claire au focus */
+  box-shadow: 0 0 5px rgba(144, 169, 85, 0.5);
+}
+
+/* Style du dropdown des résultats */
+.search-results {
+  position: absolute;
+  background-color: #FEFAE0; /* Blanc légèrement cassé */
+  border: 1px solid #90A955; /* Bordure verte claire */
+  border-radius: 4px;
+  max-height: 250px; /* Limite de hauteur */
+  overflow-y: auto;
+  width: 100%;
+  z-index: 1000;
+  top: 100%; /* Place le dropdown juste sous l'input */
+  left: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+}
+
+/* Style des items dans le dropdown */
+.search-results li {
+  padding: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid #90A955; /* Séparation entre les éléments */
+}
+
+/* Image dans chaque item */
+.image-marche {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid #4F772D; /* Bordure autour de l'image */
+}
+
+/* Texte des résultats */
+.search-results p {
+  margin: 0;
+  font-size: 16px;
+  color: #132A13; /* Texte noir/vert */
+}
+
+/* Survol des items */
+.search-results li:hover {
+  background-color: #90A955; /* Vert clair au survol */
+  color: white;
+}
+
+/* Sélection active */
+.search-results li:active {
+  background-color: #4F772D; /* Vert foncé quand cliqué */
+  color: white;
+}
+
+/* Pour gérer la hauteur maximale du dropdown */
+.search-results::-webkit-scrollbar {
+  width: 8px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background-color: #4F772D; /* Couleur du scroll */
+  border-radius: 4px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background-color: #FEFAE0;
+}

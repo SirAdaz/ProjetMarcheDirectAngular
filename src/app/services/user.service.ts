@@ -10,7 +10,6 @@ import Commande from '../models/command.model';
 })
 export class UserService {
   private apiUrl = 'https://localhost:8000/api/users';
-  private commandUrl = 'https://localhost:8000/api/commandes';
   private shortApiUrl = 'https://localhost:8000/api';
 
   constructor(private http: HttpClient) { }
@@ -33,5 +32,9 @@ export class UserService {
   // Méthode pour mettre à jour l'image de l'utilisateur
   uploadImage(id: number,formData: FormData): Observable<any> {
     return this.http.post(`${this.shortApiUrl}/upload/${id}`, formData);
+  }
+
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/${id}`)
   }
 }

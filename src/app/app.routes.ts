@@ -22,6 +22,7 @@ import { InterditComponent } from './pages/pages-erreurs/interdit/interdit.compo
 import { NotFoundComponent } from './pages/pages-erreurs/not-found/not-found.component';
 import { UnavailableComponent } from './pages/pages-erreurs/unavailable/unavailable.component';
 import { ProduitsComponent } from './pages/produits/produits.component';
+import { MarchantComponent } from './pages/marchant/marchant.component';
 
 export const routes: Routes = 
 [
@@ -41,6 +42,7 @@ export const routes: Routes =
     { path: 'marches', component:MarchesComponent},
     { path: 'marches/:id', component:PageMarcheComponent},
     { path: 'produits', component:ProduitsComponent},
+    { path: 'marchants/:id', component:MarchantComponent},
 
     // pages commerces
     { path: 'commerce/accueil', component:AccueilCommerceComponent },
