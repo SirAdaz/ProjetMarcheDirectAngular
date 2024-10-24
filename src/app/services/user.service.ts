@@ -10,7 +10,6 @@ import User from '../models/user.model';
 })
 export class UserService {
   private apiUrl = 'https://localhost:8000/api/users';
-  private commandUrl = 'https://localhost:8000/api/commandes';
   private shortApiUrl = 'https://localhost:8000/api';
 
   constructor(private http: HttpClient) { }
@@ -30,6 +29,10 @@ export class UserService {
   uploadImage(id: number,formData: FormData): Observable<any> {
     return this.http.post(`${this.shortApiUrl}/upload/${id}`, formData);
   }
+
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/${id}`)
+  }
   updateUserProfile(user: User): Observable<User> {
     return this.http.put<User>(`${this.apiUrl}/${user.id}`, user,{
       headers: {
@@ -43,5 +46,4 @@ export class UserService {
   updateInfo(userId: string, userInfo: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/${userId}`, userInfo);
   }
-  
 }
