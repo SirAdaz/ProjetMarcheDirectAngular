@@ -20,8 +20,8 @@ export class ProfilCommercantComponent implements OnInit {
   selectedItem: any;
   userInfoForm!: FormGroup;
 
-  authService = inject(AuthService)
-  userService = inject(UserService)
+  authService = inject(AuthService);
+  userService = inject(UserService);
   formBuilder = inject(FormBuilder);
 
   ngOnInit(): void {

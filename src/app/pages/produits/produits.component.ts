@@ -31,7 +31,7 @@ export class ProduitsComponent implements OnInit {
   selectedQuantity: number = 1;
 
   // Injection du service ProduitsService pour communiquer avec l'API backend
-  constructor(private ProduitsServices: ProduitsService) {}
+  constructor(private ProduitsServices: ProduitsService) { }
 
   // Supprimer les balises HTML de la description
   removeDivTags(text: string): string {
@@ -103,7 +103,7 @@ export class ProduitsComponent implements OnInit {
     }, 0);
     return totalPrice.toFixed(2) + ' €';
   }
-  
+
   // Fonction pour vider le panier dans le local storage
   clearCart(): void {
     // Supprimer le panier dans le local storage
@@ -111,28 +111,28 @@ export class ProduitsComponent implements OnInit {
     // Réinitialiser le tableau des articles du panier
     this.cartItems = []
   }
-    
+
   // Fonction pour retirer un produit du panier
   removeFromCart(item: any): void {
     // Récupérer le panier existant depuis le local storage
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    
+
     // Trouver l'index de l'article à supprimer
     const index = cart.findIndex((ci: any) => ci.id === item.id);
-    
+
     // Vérifier si l'article existe dans le panier
     if (index !== -1) {
       // Si oui, le supprimer du panier
       cart.splice(index, 1);
-    
+
       // Mettre à jour le tableau des articles du panier
       this.cartItems = cart;
-    
+
       // Enregistrer le panier mis à jour dans le local storage
       localStorage.setItem('cart', JSON.stringify(cart));
     }
   }
-  
+
   // Appelé après l'initialisation de la vue
   ngAfterViewInit(): void {
     // Obtenir des références aux boutons de pagination
@@ -153,7 +153,7 @@ export class ProduitsComponent implements OnInit {
       });
     }
   }
-  
+
   // Récupérer la page suivante des produits
   public getOtherPagesPlus(): void {
     this.ProduitsServices.getOtherPages(this.i + 1).subscribe((data) => {
@@ -164,13 +164,13 @@ export class ProduitsComponent implements OnInit {
       }
     });
   }
-  
+
   // Logique d'initialisation pour le composant, charge les données initiales des produits
   ngOnInit(): void {
     this.ProduitsServices.getProduits().subscribe((data) => {
       // Définir les données initiales des produits
       this.produits = data;
-      
+
       // Mettre à jour la visibilité des boutons en fonction des données initiales
       this.updateButtonVisibility();
     });

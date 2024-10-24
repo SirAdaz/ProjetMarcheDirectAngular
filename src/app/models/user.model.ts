@@ -13,5 +13,6 @@ export default interface User {
     imageFileName: string;
     descriptionCommerce: string;
     numSiret: string;
+    produits: [];
     userCategorie: Categorie[];
   }
