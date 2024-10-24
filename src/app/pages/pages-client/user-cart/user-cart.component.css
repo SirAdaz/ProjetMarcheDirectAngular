@@ -25,6 +25,8 @@
 }
 .panel-commander {
     flex: 1;
+    height: fit-content;
+    margin-left: 50px;
 }
 .btn-clear{
     background-color: #BC4749;
