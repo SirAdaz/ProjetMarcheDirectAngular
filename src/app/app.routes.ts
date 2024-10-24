@@ -13,6 +13,7 @@ import { PageMarcheComponent } from './pages/page-marche/page-marche.component';
 import { UserCartComponent } from './pages/pages-client/user-cart/user-cart.component';
 import { UserCommandHistoryComponent } from './pages/pages-client/user-command-history/user-command-history.component';
 import { UserCommentComponent } from './pages/pages-client/user-comment/user-comment.component';
+import { UserEditComponent } from './pages/pages-client/user-edit/user-edit.component';
 import { UserProfilComponent } from './pages/pages-client/user-profil/user-profil.component';
 import { AccueilCommerceComponent } from './pages/pages-commerces/accueil-commerce/accueil-commerce.component';
 import { GestionDesCommandesComponent } from './pages/pages-commerces/gestion-des-commandes/gestion-des-commandes.component';
@@ -55,6 +56,7 @@ export const routes: Routes =
     { path: 'user/:id/command-history', component: UserCommandHistoryComponent },
     { path: 'user/cart', component: UserCartComponent },
     { path: 'user/comments', component: UserCommentComponent },
+    { path: 'user/:id/edit', component: UserEditComponent },
 
     // pages legales
     { path: 'rgpd', component:RgpdComponent },
@@ -71,4 +73,5 @@ export const routes: Routes =
     { path: 'user/:id/command-history', component: UserCommandHistoryComponent },
     { path: 'user-cart', component: UserCartComponent },
     { path: 'user-comments', component: UserCommentComponent },
+    { path: 'user/:id/edit', component: UserEditComponent },
 ];

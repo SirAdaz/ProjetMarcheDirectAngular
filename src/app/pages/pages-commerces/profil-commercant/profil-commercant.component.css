@@ -26,6 +26,9 @@
     height: 310px;
     border-radius: 5px;
     margin-top: 12.5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .btn-border{
     position: absolute;
