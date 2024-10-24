@@ -13,6 +13,7 @@ import { PageMarcheComponent } from './pages/page-marche/page-marche.component';
 import { UserCartComponent } from './pages/pages-client/user-cart/user-cart.component';
 import { UserCommandHistoryComponent } from './pages/pages-client/user-command-history/user-command-history.component';
 import { UserCommentComponent } from './pages/pages-client/user-comment/user-comment.component';
+import { UserEditComponent } from './pages/pages-client/user-edit/user-edit.component';
 import { UserProfilComponent } from './pages/pages-client/user-profil/user-profil.component';
 import { AccueilCommerceComponent } from './pages/pages-commerces/accueil-commerce/accueil-commerce.component';
 import { GestionDesCommandesComponent } from './pages/pages-commerces/gestion-des-commandes/gestion-des-commandes.component';
@@ -22,6 +23,7 @@ import { InterditComponent } from './pages/pages-erreurs/interdit/interdit.compo
 import { NotFoundComponent } from './pages/pages-erreurs/not-found/not-found.component';
 import { UnavailableComponent } from './pages/pages-erreurs/unavailable/unavailable.component';
 import { ProduitsComponent } from './pages/produits/produits.component';
+import { MarchantComponent } from './pages/marchant/marchant.component';
 
 export const routes: Routes = 
 [
@@ -41,6 +43,7 @@ export const routes: Routes =
     { path: 'marches', component:MarchesComponent},
     { path: 'marches/:id', component:PageMarcheComponent},
     { path: 'produits', component:ProduitsComponent},
+    { path: 'marchants/:id', component:MarchantComponent},
 
     // pages commerces
     { path: 'commerce/accueil', component:AccueilCommerceComponent },
@@ -53,6 +56,7 @@ export const routes: Routes =
     { path: 'user/:id/command-history', component: UserCommandHistoryComponent },
     { path: 'user/cart', component: UserCartComponent },
     { path: 'user/comments', component: UserCommentComponent },
+    { path: 'user/:id/edit', component: UserEditComponent },
 
     // pages legales
     { path: 'rgpd', component:RgpdComponent },
@@ -69,4 +73,5 @@ export const routes: Routes =
     { path: 'user/:id/command-history', component: UserCommandHistoryComponent },
     { path: 'user-cart', component: UserCartComponent },
     { path: 'user-comments', component: UserCommentComponent },
+    { path: 'user/:id/edit', component: UserEditComponent },
 ];

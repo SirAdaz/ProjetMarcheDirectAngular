@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
+import { FormContactService } from '../../../services/form-contact.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact-form',
@@ -13,7 +15,7 @@ export class ContactFormComponent
 {
   contactForm: FormGroup; // groupe de formulaires pour le contact.
 
-  constructor(private fb: FormBuilder,  private userService: UserService) 
+  constructor(private fb: FormBuilder,  private userService: UserService, private contactService: FormContactService) 
   {
     this.contactForm = this.fb.group({ //Mise en place du formulaire avec des validations.
       userName: ['', [Validators.required, Validators.minLength(3)]], // Champ 'userName' avec validation requise et longueur minimale.
@@ -31,9 +33,18 @@ export class ContactFormComponent
   public envoyer() : void // Méthode pour soumettre le formulaire.
   {
     this.submitted = true; // Marque le formulaire comme soumis.
+
     if (this.contactForm.valid) // vérif si le formulaire est valide.
     {
-      this.message = true;
+      this.contactService.sendContactForm(this.contactForm.value).subscribe({
+        next: (response) => {
+          console.log('Email envoyé avec succès', response);
+          this.message = true; //message de succès
+        },
+        error: (err:HttpErrorResponse) => {
+          console.log('Erreur lors de l\'envoi de l\'email', err);
+        }
+      })
     }
   }
 

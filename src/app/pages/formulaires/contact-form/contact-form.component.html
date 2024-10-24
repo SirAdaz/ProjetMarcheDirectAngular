@@ -4,13 +4,25 @@
             <p class="fs-5">Contactez-nous !</p>
         </div>
         <div class="card-body m-3">
+            @if (submitted && contactForm.invalid) 
+            {
+                <div class="alert alert-danger">
+                    Veuillez remplir correctement le formulaire avant de l'envoyer.
+                </div>
+            }
+            @if (message) 
+            {
+                <div class="alert alert-success">
+                    Votre message a été envoyé avec succés !
+                </div>
+            }
             <div class="mb-3 text-start">
                 <label for="" class="form-label">Pseudo :</label>
                 <input type="text" class="form-control" formControlName="userName" required>
                 @if (submitted && userName.invalid) 
                 { 
                     <div class="text-danger">
-                        Pseudo invalide
+                        Pseudo invalide (min. 3 caractères).
                     </div>
                 }
                 @if (userName.valid) 
@@ -26,7 +38,7 @@
                 @if (submitted && email.invalid) 
                 {
                     <div class="text-danger">
-                        Email invalide
+                        Veuillez entrer un email valide.
                     </div>
                 }
                 @if (email.valid) 
@@ -74,7 +86,7 @@
                 @if (submitted && comment.invalid) 
                 {
                     <div class="text-danger">
-                        Veuillez remplir ce champ 
+                        Veuillez remplir ce champ (min. 10 caractères). 
                     </div>
                 }
                 @if (comment.valid) 
@@ -85,7 +97,7 @@
                 }
             </div>
             <div class="mb-3 text-start">
-                <input type="checkbox" class="form-check-input" required>
+                <input type="checkbox" class="form-check-input" formControlName="checkbox" required>
                 <label class="form-check-label"> Veuillez accepter nos conditions et modalités d'utilisation.</label>
                 @if (submitted && checkbox.invalid) 
                 {

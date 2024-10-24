@@ -7,7 +7,7 @@
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 .divContainer{
-    height: 80vh;
+    height: 83.8vh;
 }
 p{
     margin: 0;
@@ -29,3 +29,13 @@ p{
 /* .form-control{
 
 } */
+.text-danger 
+{
+    display: block;
+    color: #BC4749;
+}
+.text-success 
+{
+    display: block;
+    color: #4F772D;
+}

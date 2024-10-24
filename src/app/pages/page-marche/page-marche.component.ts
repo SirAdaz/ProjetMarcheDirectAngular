@@ -8,40 +8,41 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './page-marche.component.html',
-  styleUrl: './page-marche.component.css'
+  styleUrls: ['./page-marche.component.css'] // Corrigé "styleUrl" en "styleUrls"
 })
-export class PageMarcheComponent implements OnInit
-{
-  marche !: Marche;
+export class PageMarcheComponent implements OnInit {
+  marche!: Marche;
   urlImg = "https://127.0.0.1:8000/images/";
+  
+  // Injecter les services et dépendances
+  marcheServices = inject(MarchesService);
+  route = inject(ActivatedRoute);
+  router = inject(Router);
 
-  marcheServices = inject(MarchesService)
-  //permet de récup l'id
-  route = inject(ActivatedRoute)
-  //permet la redirection de la route
-  router = inject(Router)
-
-  private subscribeMarche(id:number) 
-  {
-    this.marcheServices.getMarche(id).subscribe((data)=> (this.marche = data, console.log(data)))
+  // Méthode pour récupérer le marché par ID
+  private subscribeMarche(id: number) {
+    this.marcheServices.getMarche(id).subscribe((data) => {
+      this.marche = data;
+    });
   }
 
-  private setSubscribe(id: string | null) 
-  {
-    if (id) 
-    {
-      this.subscribeMarche(+id)  
+  // Méthode pour gérer l'abonnement aux paramètres de la route
+  private setSubscribe(id: string | null) {
+    if (id) {
+      this.subscribeMarche(+id);
     }
   }
 
-  removeDivTags(text: string): string 
-  {
+  // Méthode pour enlever les balises HTML d'un texte
+  removeDivTags(text: string): string {
     return text.replace(/<\/?[^>]+(>|$)/g, '').replace(/&nbsp;/g, ' ');
   }
 
-  ngOnInit(): void 
-  {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.setSubscribe(id);
+  ngOnInit(): void {
+    // Souscrire aux changements de paramètres de la route
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      this.setSubscribe(id);
+    });
   }
 }
