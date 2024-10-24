@@ -81,8 +81,6 @@ navigateToResult(id: number) {
     this.router.navigateByUrl(url); // Utiliser navigateByUrl pour forcer le rechargement
   }
 }
-
-        
     public logout()
     {
       this.authService.logout();

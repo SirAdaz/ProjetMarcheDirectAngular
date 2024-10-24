@@ -105,7 +105,8 @@
         </div>
         @if (isLoggedIn()){
           <button class="btn-deconnexion" type="submit" (click)="logout()">Se déconnecter</button>
-        } @else {
+        } 
+        @else {
           <button class=" btn-connexion" type="submit" routerLink="login">Se connecter</button>
         }
         <a class="btn btn-panier p-2 d-flex align-items-center" routerLink="../../user/cart">

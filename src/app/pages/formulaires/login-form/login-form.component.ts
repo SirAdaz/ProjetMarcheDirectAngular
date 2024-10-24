@@ -17,13 +17,18 @@ export class LoginFormComponent {
     // Routeur injecté pour la navigation
     router = inject(Router);
   
+    submitted: boolean = false;
+    message: string | null = null; //propriété pour stocker le message d'erreur.
     // Formulaire de connexion protégé par le formulaire réactif
     protected loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
     })
     // Méthode appelée à la soumission du formulaire
-    onSubmit() {  
+    onSubmit() {
+        this.submitted = true;
+        this.message = null; //Réinitialiser le message d'erreur.
+
       if (this.loginForm.valid) {
           this.auth.login(this.loginForm.value).subscribe((data: any) => {
               if (data.token) {
@@ -41,12 +46,21 @@ export class LoginFormComponent {
                   }
               } else {
                   console.error('Aucun token reçu');
+                  this.message = 'Erreur lors de connexion, veuillez réessayer.'; // message d'erreur.
               }
           }, error => {
               console.error('Erreur de connexion:', error);
+              this.message = 'Identifiants incorrects, veuillez vérifier votre email et votre mot de passe.'; //message d'erreur.
           });
       }
   }
-  
+  public get email()
+      {
+        return this.loginForm.controls["email"] //getter pour le champ email.
+      }
+      public get password()
+      {
+        return this.loginForm.controls["password"]
+      }
 
   }
