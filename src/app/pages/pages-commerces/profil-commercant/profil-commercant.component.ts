@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../auth/auth.service';
 import { DateFormatPipe } from '../../../pipe/date-format.pipe';
 import { NgIf } from '@angular/common';
@@ -18,19 +18,33 @@ export class ProfilCommercantComponent implements OnInit {
   userInfo: any;
   selectedFile: File | null = null;
   selectedItem: any;
+  userInfoForm!: FormGroup;
 
   authService = inject(AuthService)
   userService = inject(UserService)
+  formBuilder = inject(FormBuilder);
 
   ngOnInit(): void {
-    // Récupérer l'ID de l'utilisateur connecté (décodé depuis le token)
+    // Initialisation du formulaire avec des champs vides
+    this.userInfoForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      numSiret: ['', Validators.required],
+      nameBusiness: ['', Validators.required],
+      tel: ['', Validators.required]
+    });
+
     const userId = this.authService.decodedToken ? this.authService.decodedToken.id : null;
     if (userId !== null) {
-      // Appeler la méthode pour récupérer les informations de l'utilisateur
       this.authService.getUserById(userId).subscribe(
         (data) => {
           this.userInfo = data;
-          console.log('Informations de l\'utilisateur :', this.userInfo);
+          // Utilisation de patchValue pour pré-remplir le formulaire
+          this.userInfoForm.patchValue({
+            email: this.userInfo.email,
+            numSiret: this.userInfo.numSiret,
+            nameBusiness: this.userInfo.nameBusiness,
+            tel: this.userInfo.tel
+          });
         },
         (error) => {
           console.error('Erreur lors de la récupération des informations de l\'utilisateur', error);
@@ -80,5 +94,42 @@ export class ProfilCommercantComponent implements OnInit {
         }
       });
     }
+  }
+
+  onUpdateInfo(): void {
+    if (this.userInfoForm.valid) {
+      const formData = this.getUpdatedFields(); // Obtenir uniquement les champs modifiés
+
+      if (Object.keys(formData).length > 0) { // Vérifier qu'il y a des changements
+        this.userService.updateInfo(this.authService.decodedToken.id, formData).subscribe({
+          next: (response) => {
+            console.log('Mise à jour réussie', response);
+            this.userInfo = { ...this.userInfo, ...formData }; // Mettre à jour localement les infos utilisateur
+            const modalElement = document.getElementById('modifInfo');
+            if (modalElement) {
+              const modal = new bootstrap.Modal(modalElement);
+              modal.hide();
+            }
+          },
+          error: (error) => {
+            console.error('Erreur lors de la mise à jour des informations', error, formData);
+          }
+        });
+      }
+    }
+  }
+
+  getUpdatedFields(): any {
+    const updatedFields: any = {};
+
+    Object.keys(this.userInfoForm.controls).forEach(key => {
+      const currentValue = this.userInfoForm.get(key)?.value;
+      const originalValue = this.userInfo[key];
+      if (currentValue !== originalValue) {
+        updatedFields[key] = currentValue;
+      }
+    });
+
+    return updatedFields;
   }
 }

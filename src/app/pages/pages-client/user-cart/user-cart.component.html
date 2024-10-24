@@ -1,4 +1,9 @@
 <div class="container mt-5">
+  @if (message) {
+    <div class="alert alert-info text-center">
+      {{message}}
+    </div>
+  }
   <div class="d-flex justify-content-center">
     @if (cartItems.length > 0) {
     <div class="d-flex flex-column cards">
@@ -41,11 +46,8 @@
       <h2 class="text-center mb-5">Valider votre commande</h2>
       @for (item of commercants; track $index) {
       <h5 class="border-bottom text-center mb-2 pb-2"><strong>{{ item.nameBusiness }}</strong></h5>
-<!--       <select class="form-control mb-3" id="marketSelect{{ item.id }}">
-        @for (marche of item.commercant_marche; track $index) {
-        <option value="{{ marche.id }}">{{ marche.marcheName }}</option>
-        }
-      </select> -->
+      <select class="form-control mb-3" id="marketSelect{{ item.id }}">
+      </select>
       <div class="d-flex justify-content-between">
         <p>Nombre d’articles:</p>
         <p>{{ getTotalItemByMerchant(item.id) }}</p>

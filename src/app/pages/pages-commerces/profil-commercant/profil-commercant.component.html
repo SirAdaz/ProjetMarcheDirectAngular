@@ -18,7 +18,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annulé</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
                     <button type="button" class="btn btn-primary" (click)="onUpdateImage()">Modifier</button>
                 </div>
             </div>
@@ -47,26 +47,40 @@
         </div>
         <button class="btn btn-border w-100" (click)="openModalInfo()">Changer les informations</button>
     </div>
-    
-    <!-- Modal Modif Image -->
-    <div class="modal fade" id="modifInfo" tabindex="-1" aria-labelledby="modalModifInfo" aria-hidden="true">
+
+    <!-- Modal pour modifier les informations personnelles -->
+    <div class="modal fade" id="modifInfo" tabindex="-1" aria-labelledby="modifInfoLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier votre image</h1>
+                    <h1 class="modal-title fs-5" id="modifInfoLabel">Modifier vos informations</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <input type="text" (change)="onFileSelected($event)" id="imageFile" name="imageFile">
+                    <form [formGroup]="userInfoForm" (ngSubmit)="onUpdateInfo()">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" class="form-control" formControlName="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="numSiret" class="form-label">Numéro Siret</label>
+                            <input type="text" id="numSiret" class="form-control" formControlName="numSiret">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nameBusiness" class="form-label">Nom du Stand</label>
+                            <input type="text" id="nameBusiness" class="form-control" formControlName="nameBusiness">
+                        </div>
+                        <div class="mb-3">
+                            <label for="tel" class="form-label">Téléphone</label>
+                            <input type="text" id="tel" class="form-control" formControlName="tel">
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annulé</button>
-                    <button type="button" class="btn btn-primary" (click)="onUpdateImage()">Modifier</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary" (click)="onUpdateInfo()">Enregistrer</button>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
