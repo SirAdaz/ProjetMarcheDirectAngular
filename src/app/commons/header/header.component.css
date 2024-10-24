@@ -3,6 +3,14 @@ nav
     background-color: #132a13 !important;
 
 }
+.nav-item .dropdown-toggle {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-item img {
+    margin-right: 8px; /* Espace entre l'image et le texte */
+  }
 .navbar-toggler
 {
     background-color: #FEFAE0;

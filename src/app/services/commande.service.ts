@@ -25,12 +25,12 @@ export class CommandeService {
   }
 
   // Méthode pour créer une commande
-  createCommande(data: any): Observable<Commande> {
+  createCommande(data: Commande): Observable<Commande> {
     return this.http.post<Commande>(`${this.urlApi}/commandes`, data);
   }
 
   // Méthode pour mettre à jour une commande
-  updateCommande(id: number, data: any): Observable<Commande> {
+  updateCommande(id: number, data: Commande): Observable<Commande> {
     return this.http.put<Commande>(`${this.urlApi}/commandes/${id}`, data);
   }
 }

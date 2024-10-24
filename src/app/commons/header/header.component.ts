@@ -12,7 +12,8 @@ import { AuthService } from '../../auth/auth.service';
 export class HeaderComponent 
 { 
     authService = inject(AuthService);
-    router = inject(Router);
+    router = inject(Router)
+    
     public logout()
     {
       this.authService.logout();

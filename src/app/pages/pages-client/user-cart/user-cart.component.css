@@ -26,9 +26,6 @@
 .panel-commander {
     flex: 1;
 }
-.grandDiv {
-    width: 100%;
-}
 .btn-clear{
     background-color: #BC4749;
     border-radius: 5px;

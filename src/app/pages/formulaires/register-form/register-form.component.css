@@ -29,3 +29,13 @@ p{
 /* .form-control{
 
 } */
+.text-danger 
+{
+    display: block;
+    color: #BC4749;
+}
+.text-success 
+{
+    display: block;
+    color: #4F772D;
+}

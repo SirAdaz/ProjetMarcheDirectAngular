@@ -33,6 +33,7 @@ export class ContactFormComponent
   public envoyer() : void // Méthode pour soumettre le formulaire.
   {
     this.submitted = true; // Marque le formulaire comme soumis.
+
     if (this.contactForm.valid) // vérif si le formulaire est valide.
     {
       this.contactService.sendContactForm(this.contactForm.value).subscribe({
@@ -42,7 +43,6 @@ export class ContactFormComponent
         },
         error: (err:HttpErrorResponse) => {
           console.log('Erreur lors de l\'envoi de l\'email', err);
-          
         }
       })
     }
