@@ -11,6 +11,7 @@ import User from '../models/user.model';
 export class UserService {
   private apiUrl = 'https://localhost:8000/api/users';
   private shortApiUrl = 'https://localhost:8000/api';
+  private commandUrl = 'https://localhost:8000/api/commandes';
 
   constructor(private http: HttpClient) { }
 
