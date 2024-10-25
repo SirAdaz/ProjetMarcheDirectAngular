@@ -19,7 +19,7 @@ export const AuthGuard = () => {
     return true; // Accès autorisé
   } else {
     // Si l'utilisateur n'est pas connecté et ne possède pas le rôle requis, redirection vers la page de connexion
-    router.navigateByUrl('/login');
+    router.navigateByUrl('/interdit');
     return false; // Accès refusé
   }
 };

@@ -11848,5 +11848,14 @@ textarea.form-control-lg {
 body {
   background-color: #ADC281;
   font-family: "Roboto", sans-serif;
-  height: 100%;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+app-footer {
+  margin-top: auto;
 }

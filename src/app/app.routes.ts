@@ -28,7 +28,7 @@ import { MarchantComponent } from './pages/marchant/marchant.component';
 export const routes: Routes = 
 [
     // redirection
-    { path:'', redirectTo:'accueil', pathMatch: 'full'},
+    { path:'', redirectTo:'notfound', pathMatch: 'full'},
 
     // formulaires
     { path: 'login', component: LoginFormComponent },
