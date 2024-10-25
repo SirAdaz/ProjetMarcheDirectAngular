@@ -45,24 +45,21 @@
     <div class="d-flex flex-column color-white border-radius p-3 panel-commander mt-3">
       <h2 class="text-center mb-5">Valider votre commande</h2>
       @for (item of commercants; track $index) {
-      <h5 class="border-bottom text-center mb-2 pb-2"><strong>{{ item.nameBusiness }}</strong></h5>
-      <select class="form-control mb-3" id="marketSelect{{ item.id }}">
-      </select>
-      <div class="d-flex justify-content-between">
-        <p>Nombre d’articles:</p>
-        <p>{{ getTotalItemByMerchant(item.id) }}</p>
-      </div>
-      <div class="d-flex justify-content-between border-bottom">
-        <p>Total :</p>
-        <p>{{ getTotalPriceByMerchant(item.id) }}</p>
-      </div>
+        <h5 class="border-bottom text-center mb-2 pb-2"><strong>{{ item.nameBusiness }}</strong></h5>
+        <div class="d-flex justify-content-between">
+          <p>Nombre d’articles:</p>
+          <p>{{ getTotalItemByMerchant(item.id) }}</p>
+        </div>
+        <div class="d-flex justify-content-between border-bottom">
+          <p>Total :</p>
+          <p>{{ getTotalPriceByMerchant(item.id) }}</p>
+        </div>
       }
       <h5 class="text-center mt-2">Nombre d’articles Total: {{ getTotalItems() }}</h5>
       <h3 class="text-center mt-2">Total général: {{ getTotalPrice() }}</h3>
       <div class="d-flex flex-column">
         <button class="btn btn-pagination mt-4" (click)="newCommande()">Commander</button>
-        <button class="btn btn-clear mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Vider le
-          panier</button>
+        <button class="btn btn-clear mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Vider le panier</button>
       </div>
     </div>
     } @else {
