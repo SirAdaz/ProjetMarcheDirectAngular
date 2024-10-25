@@ -30,6 +30,7 @@ export class ProduitsComponent implements OnInit {
   // Quantité sélectionnée pour le produit
   selectedQuantity: number = 1;
 
+
   // Injection du service ProduitsService pour interagir avec l'API
   constructor(private produitsServices: ProduitsService) {}
 
@@ -104,7 +105,8 @@ export class ProduitsComponent implements OnInit {
     return totalPrice.toFixed(2) + ' €'; // Retourne le prix formaté
   }
 
-  // Vide le panier dans le local storage
+
+  // Fonction pour vider le panier dans le local storage
   clearCart(): void {
     localStorage.removeItem('cart'); // Supprime le panier du local storage
     this.cartItems = []; // Réinitialise le tableau des articles du panier
