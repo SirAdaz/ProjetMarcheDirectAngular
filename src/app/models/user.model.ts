@@ -1,6 +1,7 @@
 // Model pour le User
 
 import Categorie from "./categorie.model";
+import Produit from "./produit.model";
 
 // Ajout des champs
 export default interface User { 
@@ -14,4 +15,5 @@ export default interface User {
     descriptionCommerce: string;
     numSiret: string;
     userCategorie: Categorie[];
+    produits: Produit[];
   }

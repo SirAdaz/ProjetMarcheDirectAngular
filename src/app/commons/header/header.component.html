@@ -18,9 +18,32 @@
             <a class="nav-link" href="#">Gestion des Commandes</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
-        </form> 
+        <div>
+          <!-- Barre de recherche -->
+          <form class="d-flex" (ngSubmit)="search(searchForm.value)">
+            <input
+              class="search-input me-1"
+              type="search"
+              placeholder="Rechercher..."
+              aria-label="Search"
+              [formControl]="searchForm"
+            />
+          </form>
+
+          <!-- Résultats de la recherche -->
+          <div class="position-relative d-flex flex-column">
+            @if (searchResults.length > 0) {
+              <ul class="search-results p-0">
+                @for (result of searchResults; track $index) {
+                  <li (click)="navigateToResult(result.id)">
+                    <div class="image-marche" [style.backgroundImage]="'url(' + urlImg + result.imageFileName + ')'"></div>
+                    <p>{{ result.productName || result.marcheName || result.nameBusiness }}</p>
+                  </li>
+                }
+              </ul>
+            }
+          </div>
+        </div>
         @if (isLoggedIn()){
           <!-- Dropdown pour le profil utilisateur -->
           <div class="profil-item dropdown">
@@ -60,12 +83,33 @@
             <a class="nav-link" routerLink="produits">Produits</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
-        </form>
-        
-        @if (isLoggedIn())
-        {  
+        <div>
+          <!-- Barre de recherche -->
+          <form class="d-flex" (ngSubmit)="search(searchForm.value)">
+            <input
+              class="search-input me-1"
+              type="search"
+              placeholder="Rechercher..."
+              aria-label="Search"
+              [formControl]="searchForm"
+            />
+          </form>
+
+          <!-- Résultats de la recherche -->
+          <div class="position-relative d-flex flex-column">
+            @if (searchResults.length > 0) {
+              <ul class="search-results p-0">
+                @for (result of searchResults; track $index) {
+                  <li (click)="navigateToResult(result.id)">
+                    <div class="image-marche" [style.backgroundImage]="'url(' + urlImg + result.imageFileName + ')'"></div>
+                    <p>{{ result.productName || result.marcheName || result.nameBusiness }}</p>
+                  </li>
+                }
+              </ul>
+            }
+          </div>
+        </div>
+        @if (isLoggedIn()){
           <button class="btn-deconnexion" type="submit" (click)="logout()">Se déconnecter</button>
         } 
         @else {
