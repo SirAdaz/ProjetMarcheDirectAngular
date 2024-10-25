@@ -10,10 +10,10 @@
     <!-- Actions de l'utilisateur -->
     <div class="row mt-4">
       <div class="col text-center">
-        <a [routerLink]="['/user', user?.id, 'command-history']" class="btn btn-success mx-2" style="border:  1px solid #838383;">Historique de vos commandes</a>
+        <a [routerLink]="['/user/command-history',user?.id]" class="btn btn-success mx-2" style="border:  1px solid #838383;">Historique de vos commandes</a>
         <a [routerLink]="['/user/cart']" class="btn btn-success mx-2" style="border:  1px solid #838383;">Voir votre Panier</a>
 
-        <a routerLink="/user/comments" class="btn btn-success" style="border:  1px solid #838383;">Voir vos Avis</a>
+        <a [routerLink]="['/user/comments', user?.id]" class="btn btn-success" style="border:  1px solid #838383;">Voir vos Commentaires</a>
       </div>
     </div>
 
