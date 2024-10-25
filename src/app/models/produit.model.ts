@@ -7,7 +7,6 @@ export default interface Produit {
     productName: string;
     prix: number;
     format: Format;
-    disponible: boolean;
     stock: number;
     imageFileName: string;
     description: string;

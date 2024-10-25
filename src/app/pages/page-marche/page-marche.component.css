@@ -1,3 +1,7 @@
+.marche-commercant 
+{
+    height: 83.8vh;
+}
 .card 
 {
     margin: 15px;
@@ -82,4 +86,10 @@ h1
 .commercant-text 
 {
     text-align: center;
+}
+.tout-commercant 
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }

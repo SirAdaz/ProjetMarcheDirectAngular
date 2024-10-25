@@ -1,6 +1,7 @@
 // Model pour le User
 
-import Marche from "./marche.model";
+import Categorie from "./categorie.model";
+import Produit from "./produit.model";
 
 // Ajout des champs
 export default interface User { 
@@ -11,8 +12,8 @@ export default interface User {
     nameBusiness: string;
     stats: [] ;
     imageFileName: string;
-    roles: [];
     descriptionCommerce: string;
     numSiret: string;
-    commercant_marche : Marche[];
+    userCategorie: Categorie[];
+    produits: Produit[];
   }
