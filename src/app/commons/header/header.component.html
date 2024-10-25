@@ -22,6 +22,12 @@
           <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
         </form> 
         @if (isLoggedIn()){
+          <!-- Dropdown pour le profil utilisateur -->
+          <div class="profil-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img [src]="'url(' + urlImg + user.imageFileName + ')'" class="rounded-circle" alt="Profile" width="30" height="30">
+            </a>
+          </div>
           <button class="btn-deconnexion" type="submit" (click)="logout()">Se déconnecter</button>
         } @else {
           <button class=" btn-connexion" type="submit" routerLink="login">Se connecter</button>
