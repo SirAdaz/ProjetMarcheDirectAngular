@@ -23,4 +23,9 @@ export class ProduitsService {
   getOtherPages(i: number): Observable<Produit[]> {
     return this.http.get<Produit[]>(`${this.urlApi}/produits?itemsPerPage=6&page=${i}`);
   }
+
+  // Méthode pour update le stock d'un produit
+  updateProductStock(id: number, stock: number): Observable<Produit> {
+    return this.http.patch<Produit>(`${this.urlApi}/produits/${id}`, { stock } );
+  }
 }

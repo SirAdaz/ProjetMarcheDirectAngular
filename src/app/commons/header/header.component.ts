@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
-import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, distinct, distinctUntilChanged } from 'rxjs';
+import User from '../../models/user.model';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { SearchService } from '../../services/search.service';
 
 @Component({
@@ -12,8 +13,9 @@ import { SearchService } from '../../services/search.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent 
-{ 
+export class HeaderComponent   
+{  
+  user !: User;
   urlImg = "https://127.0.0.1:8000/images/";
   searchForm: FormControl;
   searchResults: any[] = []; // Stocker les résultats de recherche
