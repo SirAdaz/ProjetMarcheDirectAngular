@@ -1,4 +1,4 @@
-@if (isCommerceAccueil()) 
+@if (authService.getRoles('commercant')) 
 {
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -45,13 +45,44 @@
           </div>
         </div>
         @if (isLoggedIn()){
-          <!-- Dropdown pour le profil utilisateur -->
-          <div class="profil-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img [src]="'url(' + urlImg + user.imageFileName + ')'" class="rounded-circle" alt="Profile" width="30" height="30">
-            </a>
+          <!-- Menu DropDown -->
+          <div class="profile">
+            <img src="images/logo.png" class="user-pic"  (click)="toggleMenu()">
+            <div class="sub-menu-wrap" #subMenu>
+              <div class="sub-menu">
+                <div class="user-info">
+                  <img src="images/logo.png">
+                </div>
+                <hr>
+
+                <a href="#" class="sub-menu-link">
+                  <i class="fa-solid fa-user"></i>
+                  <p>Profil</p>
+                  <span>></span>
+                </a>
+                <a href="#" class="sub-menu-link">
+                  <i class="fa-solid fa-store"></i>
+                  <p>Commandes</p>
+                  <span>></span>
+                </a>
+                <a href="#" class="sub-menu-link">
+                  <i class="fa-solid fa-comment"></i>
+                  <p>Avis</p>
+                  <span>></span>
+                </a>
+                <a href="#" class="sub-menu-link">
+                  <i class="fa-solid fa-user-tie"></i>
+                  <p>Admin</p>
+                  <span>></span>
+                </a>
+                <a href="#" class="sub-menu-link" (click)="logout()">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  <p>Déconnexion</p>
+                  <span>></span>
+                </a>
+              </div>
+            </div>
           </div>
-          <button class="btn-deconnexion" type="submit" (click)="logout()">Se déconnecter</button>
         } @else {
           <button class=" btn-connexion" type="submit" routerLink="login">Se connecter</button>
         }
@@ -110,11 +141,49 @@
           </div>
         </div>
         @if (isLoggedIn()){
-          <button class="btn-deconnexion" type="submit" (click)="logout()">Se déconnecter</button>
+          <!-- Menu DropDown -->
+          <div class="profile">
+            <img src="images/logo.png" class="user-pic"  (click)="toggleMenu()">
+            <div class="sub-menu-wrap" #subMenu>
+              <div class="sub-menu">
+                <div class="user-info">
+                  <img src="images/logo.png">
+                </div>
+                <hr>
+
+                <a href="#" class="sub-menu-link">
+                  <i class="fa-solid fa-user"></i>
+                  <p>Profil</p>
+                  <span>></span>
+                </a>
+                <a href="#" class="sub-menu-link">
+                  <i class="fa-solid fa-store"></i>
+                  <p>Commandes</p>
+                  <span>></span>
+                </a>
+                <a href="#" class="sub-menu-link">
+                  <i class="fa-solid fa-comment"></i>
+                  <p>Avis</p>
+                  <span>></span>
+                </a>
+                <a href="#" class="sub-menu-link">
+                  <i class="fa-solid fa-user-tie"></i>
+                  <p>Admin</p>
+                  <span>></span>
+                </a>
+                <a href="#" class="sub-menu-link" (click)="logout()">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  <p>Déconnexion</p>
+                  <span>></span>
+                </a>
+              </div>
+            </div>
+          </div>
         } 
         @else {
           <button class=" btn-connexion" type="submit" routerLink="login">Se connecter</button>
         }
+          
         <a class="btn btn-panier p-2 d-flex align-items-center" routerLink="../../user/cart">
           <i class="fa-solid fa-cart-shopping me-1"></i>
           <p class="m-0">Panier</p>

@@ -44,3 +44,6 @@ p{
     background-color: #4F772D;
     color: #FEFAE0;
 }
+.required-asterisk {
+    color: red;
+}

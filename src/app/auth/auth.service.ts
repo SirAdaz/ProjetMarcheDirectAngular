@@ -76,6 +76,15 @@ export class AuthService {
     // Retourne false si le token décodé n'existe pas ou si l'utilisateur ne possède pas le rôle spécifié
     return false;
   }
+  //Méthode pour récupérer le rôle principal
+  getUserRole(): string 
+  {
+    if (this.decodedToken && this.decodedToken.roles.length > 0) 
+    {
+      return this.decodedToken.roles[0]; //Renvoie le premier rôle
+    }
+    return '';
+  }
 
   // Nouvelle méthode pour récupérer les informations d'un utilisateur par son ID
   getUserById(userId: number): Observable<any> {

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import User from '../../models/user.model';
@@ -13,14 +13,16 @@ import { SearchService } from '../../services/search.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent   
+export class HeaderComponent implements OnInit
 {  
   user !: User;
   urlImg = "https://127.0.0.1:8000/images/";
   searchForm: FormControl;
   searchResults: any[] = []; // Stocker les résultats de recherche
+  userRole: string = '';
+  @ViewChild('subMenu', { static:false }) subMenu!: ElementRef;
 
-  constructor(private searchService: SearchService, private router: Router, private authService: AuthService) {
+  constructor(private searchService: SearchService, private router: Router, public authService: AuthService) {
     this.searchForm = new FormControl();
 
     // Observateur de la saisie utilisateur
@@ -83,17 +85,27 @@ navigateToResult(id: number) {
     this.router.navigateByUrl(url); // Utiliser navigateByUrl pour forcer le rechargement
   }
 }
-    public logout()
-    {
-      this.authService.logout();
-      this.router.navigate(['login']);
-    }
-    isLoggedIn() 
-    {
-      return localStorage.getItem('isAuthenticated') === 'true';
-    }
-    isCommerceAccueil() : boolean
-    {
-        return this.router.url === '/commerce/accueil';
-    }
+//Méthode pour se déconnecter
+public logout()
+{
+  this.authService.logout();
+  this.router.navigate(['login']);
+}
+//Méthode pour savoir si un utilisateur est connecter
+isLoggedIn() 
+{
+  return localStorage.getItem('isAuthenticated') === 'true';
+}
+ngOnInit(): void 
+{
+  this.userRole = this.authService.getUserRole();
+}
+//Méthode pour le dropdown Profile
+toggleMenu(): void 
+{      
+  if (this.subMenu) 
+  {
+    this.subMenu.nativeElement.classList.toggle('open-menu');
+  }   
+}
 }
