@@ -12,6 +12,12 @@ import { UserService } from '../../../services/user.service';
 })
 export class UserProfilComponent implements OnInit {
   user: User | undefined;
+  private imageUrlBase = 'https://localhost:8000/images';
+
+  // Méthode pour obtenir l'URL complète de l'image
+  getUserImageUrl(imageFileName: string | null | undefined): string {
+    return imageFileName ? `${this.imageUrlBase}/${imageFileName}` : 'images';
+  }
 
   constructor(private userService: UserService, private route: ActivatedRoute) {}
 
