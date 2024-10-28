@@ -21,7 +21,7 @@ export class ContactFormComponent
       userName: ['', [Validators.required, Validators.minLength(3)]], // Champ 'userName' avec validation requise et longueur minimale.
       email: ['', [Validators.required, Validators.email]], // Champ 'email' avec validation.
       tel: ['', [Validators.required]], // Champ 'tel' avec validation.
-      nameBusiness: ['', [Validators.required, Validators.minLength(3)]], // Champ 'nameBusiness' avec validation et longueur minimale.
+      nameBusiness: ['', [Validators.minLength(3)]], // Champ 'nameBusiness' avec validation et longueur minimale (nom d'entreprise pas obligatoire donc j'enlève le required).
       checkbox: [false, [Validators.requiredTrue]], // Champ 'checkbox' avec validation.
       comment: ['', [Validators.required, Validators.minLength(10)]] // Champ 'comment avec validation et longueur minimale.
     })
