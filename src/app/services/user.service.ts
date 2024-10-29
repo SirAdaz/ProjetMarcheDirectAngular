@@ -28,7 +28,7 @@ export class UserService {
 
   // Méthode pour récupérer l'historique des commandes d'un utilisateur
   getUserCommands(userId: number): Observable<Commande[]> {
-    return this.http.get<Commande[]>(`${this.commandUrl}/${userId}/user/command-history/:id`);
+    return this.http.get<Commande[]>(`${this.commandUrl}/user/${userId}`);
   }
 
   // Méthode pour mettre à jour l'image de l'utilisateur
