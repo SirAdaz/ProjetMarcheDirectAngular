@@ -46,6 +46,36 @@
       <h2 class="text-center mb-5">Valider votre commande</h2>
       @for (item of commercants; track $index) {
         <h5 class="border-bottom text-center mb-2 pb-2"><strong>{{ item.nameBusiness }}</strong></h5>
+        <!-- Sélecteur de marché pour chaque commerçant -->
+        <label for="marketSelect-{{ item.id }}">Choisir un marché :</label>
+        <select
+          id="marketSelect-{{ item.id }}"
+          [(ngModel)]="selectedMarkets[item.id]"
+          (change)="onMarketSelect(item.id, selectedMarkets[item.id])"
+          name="marketSelect-{{ item.id }}"
+        >
+          <option [value]="null" disabled selected>Choisissez un marché</option>
+          <!-- Boucle sur les marchés disponibles pour le commerçant -->
+          @for (marche of commercantMarches[item.id]; track $index) {
+            <option [value]="marche.id">
+              {{ marche.marcheName }}
+            </option>
+          }
+        </select>
+
+        <!-- Si un marché est sélectionné, affiche les jours correspondants -->
+        @if (selectedMarkets[item.id]) {
+          <label for="daySelect-{{ item.id }}">Choisir un jour :</label>
+          <select id="daySelect-{{ item.id }}" [(ngModel)]="selectedDay[item.id]">
+            <option [value]="null" disabled selected>Choisissez un jour</option>
+            <!-- Boucle sur les jours du marché sélectionné -->
+            @for (day of getSelectedMarketDays(item.id); track $index) {
+              <option [value]="day.id">
+                {{ day.name }}
+              </option>
+            }
+          </select>
+        }
         <div class="d-flex justify-content-between">
           <p>Nombre d’articles:</p>
           <p>{{ getTotalItemByMerchant(item.id) }}</p>
