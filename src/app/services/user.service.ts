@@ -52,4 +52,8 @@ export class UserService {
   updateInfo(userId: string, userInfo: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/${userId}`, userInfo);
   }
+
+  getMarketsByCommercant(commercantId: number): Observable<any> {
+    return this.http.get(`${this.shortApiUrl}/marches?userId=${commercantId}`);
+  }
 }
