@@ -141,4 +141,9 @@ toggleMenu(): void
     this.subMenu.nativeElement.classList.toggle('open-menu');
   }   
 }
+
+// Méthode pour vérifier si l'utilisateur a le rôle de commerçant
+hasRole(role: string): boolean {
+  return this.authService.getRoles(role);
+}
 }
