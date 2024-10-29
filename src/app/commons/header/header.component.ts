@@ -120,10 +120,14 @@ ngOnInit(): void
   })
   
   const userId = this.authService.decodedToken ? this.authService.decodedToken.id : null;
+  console.log(userId);
     if (userId !== null) {
+      
       this.authService.getUserById(userId).subscribe(
         (data) => {
           this.user = data;
+          console.log(userId);
+          
           console.log(data);
           
         },

@@ -8,7 +8,7 @@ export const AuthGuard = () => {
   const isLoggedIn = inject(AuthService).isLoggedIn()
   // Vérifie si l'utilisateur a des roles spécifiques en utilisant le service AuthService
   const getRoleAdmin = inject(AuthService).getRoles("ROLE_ADMIN")
-  const getRoleCommercant = inject(AuthService).getRoles("ROLE_COMMERCIANT")
+  const getRoleCommercant = inject(AuthService).getRoles("ROLE_COMMERCANT")
   const getRoleUser = inject(AuthService).getRoles("ROLE_USER")
 
   // Injection du service Router pour la navigation
