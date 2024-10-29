@@ -125,11 +125,7 @@ ngOnInit(): void
       
       this.authService.getUserById(userId).subscribe(
         (data) => {
-          this.user = data;
-          console.log(userId);
-          
-          console.log(data);
-          
+          this.user = data;      
         },
         (error) => {
           console.error('Erreur lors de la récupération des informations de l\'utilisateur', error);
