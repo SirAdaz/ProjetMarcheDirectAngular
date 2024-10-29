@@ -72,10 +72,12 @@
                   <i class="fa-solid fa-store"></i>
                   <p>Commandes</p>
                 </a>
-                <a routerLink="admin" class="sub-menu-link">
-                    <i class="fa-solid fa-user-tie"></i>
-                    <p>Admin</p>
-                </a>
+                @if (hasRole('ROLE_ADMIN')){
+                  <a routerLink="admin" class="sub-menu-link">
+                      <i class="fa-solid fa-user-tie"></i>
+                      <p>Admin</p>
+                  </a>
+                }
                 <a routerLink="logout" class="sub-menu-link" (click)="logout()">
                   <i class="fa-solid fa-right-from-bracket"></i>
                   <p>Déconnexion</p>
@@ -164,10 +166,12 @@
                   <i class="fa-solid fa-comment"></i>
                   <p>Avis</p>
                 </a>
-                <a href="admin" class="sub-menu-link">
-                  <i class="fa-solid fa-user-tie"></i>
-                  <p>Admin</p>
-                </a>
+                @if (hasRole('ROLE_ADMIN')){
+                  <a routerLink="admin" class="sub-menu-link">
+                      <i class="fa-solid fa-user-tie"></i>
+                      <p>Admin</p>
+                  </a>
+                }
                 <a href="logout" class="sub-menu-link" (click)="logout()">
                   <i class="fa-solid fa-right-from-bracket"></i>
                   <p>Déconnexion</p>

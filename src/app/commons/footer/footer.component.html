@@ -6,6 +6,8 @@
         <li><a routerLink="rgpd">RGPD</a></li>
         <li><a routerLink="contact">Contactez-nous</a></li>
         <li><a routerLink="cgv">Conditions générales de vente</a></li>
-        <li><a routerLink="commerce/accueil">Accès à l'espace commerçant</a></li>
+        @if (hasRole('ROLE_COMMERCANT')){
+            <li><a routerLink="commerce/accueil">Accès à l'espace commerçant</a></li>
+        }
     </ul>
 </footer>
