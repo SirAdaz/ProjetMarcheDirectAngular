@@ -17,7 +17,7 @@ import Jours from '../../../models/jours.models';
 @Component({
   selector: 'app-user-cart', // Sélecteur du composant
   standalone: true, // Indique que ce composant est autonome
-  imports: [CommonModule, RouterLink, FormsModule ], // Modules importés
+  imports: [CommonModule, RouterLink, FormsModule], // Modules importés
   templateUrl: './user-cart.component.html', // Chemin vers le template HTML
   styleUrls: ['./user-cart.component.css'] // Chemin vers les styles CSS
 })
@@ -36,7 +36,8 @@ export class UserCartComponent implements OnInit {
     private authService: AuthService, // Service pour l'authentification
     private router: Router, // Service pour la navigation
     private commandeService: CommandeService, // Service pour les commandes
-  ) {}
+    private productService: ProduitsService // Service pour les produits
+  ) { }
 
   // Récupère les articles du panier stockés dans le localStorage
   getCartItems(): any[] {
@@ -94,11 +95,11 @@ export class UserCartComponent implements OnInit {
     const cart = this.getCartItems();
     const index = cart.findIndex(ci => ci.id === item.id);
     if (index !== -1) {
-        cart[index].quantity = selectedQuantity;
-        localStorage.setItem('cart', JSON.stringify(cart));
-        this.cartItems = [...cart]; // Met à jour l'affichage du panier
+      cart[index].quantity = selectedQuantity;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      this.cartItems = [...cart]; // Met à jour l'affichage du panier
     }
-}
+  }
 
 
   // Calcule le prix total d'un commerçant spécifique
@@ -156,8 +157,8 @@ export class UserCartComponent implements OnInit {
   // Crée une nouvelle commande à partir des articles du panier
   newCommande(): void {
     if (!this.authService.isLoggedIn()) {
-        this.router.navigate(['/login']);
-        return;
+      this.router.navigate(['/login']);
+      return;
     }
 
 
@@ -172,72 +173,109 @@ export class UserCartComponent implements OnInit {
     for (const [merchantId, items] of Object.entries(groupedItems)) {
       const selectedMarketId = Number(this.selectedMarkets[merchantId]);
       const selectedMarket = this.commercantMarches[merchantId]?.find(
-          marche => marche.id === selectedMarketId
+        marche => marche.id === selectedMarketId
       );
-      
-      
+
+
       if (!selectedMarket) {
-          this.message = `Veuillez sélectionner un marché pour le commerçant ${merchantId}.`;
-          return;
+        this.message = `Veuillez sélectionner un marché pour le commerçant ${merchantId}.`;
+        return;
       }
       if (!this.selectedDay[merchantId]) {
         this.message = `Veuillez sélectionner une journée pour le commerçant ${merchantId}.`;
         return;
-    }
+      }
+      // Vérifiez que le stock est suffisant avant de créer la commande
+      const insufficientStock = items.some(item => item.stock < item.quantity);
+      if (insufficientStock) {
+        this.message = 'Quantité demandée supérieure au stock disponible.';
+        return; // Sortir si le stock est insuffisant
+      }
 
-        // Récupération des infos commerçant et client pour la commande
-        this.fetchCommercantInfo(+merchantId).subscribe(merchantInfo => {
-            this.userService.getUserProfile(userId).subscribe(userInfo => {
-                const produits_commande: ProduitCommande[] = items.map(item => ({
-                    productId: item.id,
-                    quantity: item.quantity
-                }));
+      // Récupération des infos commerçant et client pour la commande
+      this.fetchCommercantInfo(+merchantId).subscribe(merchantInfo => {
+        this.userService.getUserProfile(userId).subscribe(userInfo => {
+          const produits_commande: ProduitCommande[] = items.map(item => ({
+            productId: item.id,
+            quantity: item.quantity
+          }));
 
-                const produits = items.map(item => ({
-                    id: item.id,
-                    productName: item.name,
-                    description: item.description,
-                    prix: item.price,
-                    stock: item.stock ?? 0,
-                    imageFileName: item.imageFileName,
-                    userProduct: item.user,
-                    format: item.format
-                }));
+          const produits = items.map(item => ({
+            id: item.id,
+            productName: item.name,
+            description: item.description,
+            prix: item.price,
+            stock: item.stock ?? 0,
+            imageFileName: item.imageFileName,
+            userProduct: item.user,
+            format: item.format
+          }));
 
-                const UserCommande = [userInfo, merchantInfo];
-                const selectedDay = this.selectedDay[merchantId] || ""; 
+          const UserCommande = [userInfo, merchantInfo];
+          const selectedDay = this.selectedDay[merchantId] || "";
 
-                const orderData: Commande = {
-                    produits_commande: produits_commande,
-                    etat: { id: 1, name: 'En attente' },
-                    UserCommande: UserCommande,
-                    produits: produits,
-                    marche: selectedMarket, 
-                    jour: selectedDay,
-                };
+          const orderData: Commande = {
+            produits_commande: produits_commande,
+            etat: { id: 1, name: 'En attente' },
+            UserCommande: UserCommande,
+            produits: produits,
+            marche: selectedMarket,
+            jour: selectedDay,
+          };
 
-                // Création de la commande et mise à jour du stock
-                this.createOrder(orderData).subscribe(
-                    response => {
-                        successfulOrders++;
-                        this.message = 'Commande créée avec succès !';
-                        if (successfulOrders === totalOrders) {
-                            this.clearCart();
-                        }
-                    },
-                    error => {
-                        console.error("Erreur lors de la création de la commande:", error);
-                        this.message = 'Erreur lors de la création de la commande. Veuillez réessayer.';
-                    }
-                );
-            }, error => {
-                console.error("Erreur lors de la récupération des informations du client:", error);
-                this.message = 'Erreur lors de la récupération des informations du client.';
-            });
+          // Création de la commande et mise à jour du stock
+          this.createOrder(orderData).subscribe(
+            response => {
+              successfulOrders++;
+              this.message = 'Commande créée avec succès !';
+              // Mettez à jour le stock
+              let updateStockPromises = items.map(item => {
+                const stock = item.stock !== undefined ? item.stock : 0; // Valeur par défaut si undefined
+                const quantity = item.quantity !== undefined ? item.quantity : 0; // Valeur par défaut si undefined
+
+                // Ajoutez des logs pour vérifier les valeurs
+                console.log(`Product ID: ${item.id}, Stock: ${stock}, Quantity requested: ${quantity}`);
+
+                // Vérifiez si la quantité demandée est supérieure au stock
+                if (quantity > stock) {
+                  this.message = `Quantité demandée pour ${item.productName} dépasse le stock disponible. Stock actuel: ${stock}.`;
+                  console.error(`Quantity requested exceeds available stock for product ID: ${item.id}.`);
+                  return Promise.reject(new Error(`Quantity requested exceeds available stock for product ID: ${item.id}.`));
+                }
+
+                const newStock = stock - quantity; // Calculer le nouveau stock
+                console.log(`Updating stock for product ID: ${item.id}, New stock: ${newStock}`); // Log pour déboguer
+                return this.productService.updateProductStock(item.id, newStock).toPromise();
+              });
+
+
+              Promise.all(updateStockPromises).then(() => {
+                // Tout a réussi, videz le panier ici
+                if (successfulOrders === totalOrders) {
+                  this.clearCart();
+                }
+              }).catch(error => {
+                this.message = 'Erreur lors de la mise à jour du stock.';
+                console.error('Erreur lors de la mise à jour du stock :', error);
+              });
+              if (successfulOrders === totalOrders) {
+
+                this.clearCart();
+              }
+            },
+            error => {
+              console.error("Erreur lors de la création de la commande:", error);
+              this.message = 'Erreur lors de la création de la commande. Veuillez réessayer.';
+            }
+          );
         }, error => {
-            console.error("Erreur lors de la récupération des informations du commerçant:", error);
-            this.message = 'Erreur lors de la récupération des informations du commerçant.';
+          console.error("Erreur lors de la récupération des informations du client:", error);
+          this.message = 'Erreur lors de la récupération des informations du client.';
         });
+      }, error => {
+        console.error("Erreur lors de la récupération des informations du commerçant:", error);
+        this.message = 'Erreur lors de la récupération des informations du commerçant.';
+      });
     }
   }
 
