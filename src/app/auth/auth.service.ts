@@ -71,8 +71,6 @@ export class AuthService {
   getRoles(value: string): boolean {
     // Vérifie si le token décodé existe et si l'utilisateur possède le rôle spécifié
     if (this.decodedToken) {
-      console.log(this.decodedToken.roles);
-      
       return this.decodedToken.roles.some((role: string) => role === value)
     }
     // Retourne false si le token décodé n'existe pas ou si l'utilisateur ne possède pas le rôle spécifié
