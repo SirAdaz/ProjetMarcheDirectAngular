@@ -69,6 +69,7 @@ h1
     border-radius: 10px;
     box-shadow: 5px 5px 5px rgba(79, 79, 79, 0.5);
     margin: 20px 10px;
+    cursor: pointer;
 }
 .image-commercant 
 {
