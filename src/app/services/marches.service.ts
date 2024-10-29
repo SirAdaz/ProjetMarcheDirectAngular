@@ -12,7 +12,7 @@ export class MarchesService {
   constructor(private http: HttpClient) { }
 
   getMarches(): Observable<Marche[]> {
-    return this.http.get<Marche[]>(`${this.urlApi}/marches`)
+    return this.http.get<Marche[]>(`${this.urlApi}/marches?itemsPerPage=6`)
   }
 
   getMarche(id: number): Observable<Marche> {

@@ -53,9 +53,9 @@ export const routes: Routes =
 
     // pages client
     { path: 'user/profil/:id', component: UserProfilComponent },
-    { path: 'user/:id/command-history', component: UserCommandHistoryComponent },
+    { path: 'user/command-history/:id', component: UserCommandHistoryComponent },
     { path: 'user/cart', component: UserCartComponent },
-    { path: 'user/comments', component: UserCommentComponent },
+    { path: 'user/comments/:id', component: UserCommentComponent },
     { path: 'user/:id/edit', component: UserEditComponent },
 
     // pages legales
@@ -70,7 +70,7 @@ export const routes: Routes =
 
     // pages user
     { path: 'user-profil', component: UserProfilComponent},
-    { path: 'user/:id/command-history', component: UserCommandHistoryComponent },
+    { path: 'user/command-history/:id', component: UserCommandHistoryComponent },
     { path: 'user-cart', component: UserCartComponent },
     { path: 'user-comments', component: UserCommentComponent },
     { path: 'user/:id/edit', component: UserEditComponent },

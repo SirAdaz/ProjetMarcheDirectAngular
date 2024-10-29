@@ -7,12 +7,12 @@ import { Comment } from '../models/comment.model';
   providedIn: 'root'
 })
 export class CommentService {
-  private apiUrl = 'https://localhost:8000/api/comments';
+  private apiUrl = 'https://localhost:8000/api/comments/user';
 
   constructor(private http: HttpClient) {}
 
-  // Méthode pour récupérer les avis d'un utilisateur
-  getUserComments(userId: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${this.apiUrl}/user/${userId}`);
+  // Récupérer les commentaires d'un user par son id
+  getCommentsByUserId(userId: number): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.apiUrl}/${userId}`);
   }
 }
