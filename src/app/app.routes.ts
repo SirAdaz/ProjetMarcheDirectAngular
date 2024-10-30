@@ -5,9 +5,12 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { ContactFormComponent } from './pages/formulaires/contact-form/contact-form.component';
 import { LoginFormComponent } from './pages/formulaires/login-form/login-form.component';
 import { RegisterFormComponent } from './pages/formulaires/register-form/register-form.component';
+import { ResetPasswordRequestComponent } from './pages/formulaires/reset-password-request/reset-password-request.component';
+import { ResetPasswordComponent } from './pages/formulaires/reset-password/reset-password.component';
 import { CgvComponent } from './pages/legal/cgv/cgv.component';
 import { MentionLegaleComponent } from './pages/legal/mention-legale/mention-legale.component';
 import { RgpdComponent } from './pages/legal/rgpd/rgpd.component';
+import { MarchantComponent } from './pages/marchant/marchant.component';
 import { MarchesComponent } from './pages/marches/marches.component';
 import { PageMarcheComponent } from './pages/page-marche/page-marche.component';
 import { UserCartComponent } from './pages/pages-client/user-cart/user-cart.component';
@@ -23,7 +26,6 @@ import { InterditComponent } from './pages/pages-erreurs/interdit/interdit.compo
 import { NotFoundComponent } from './pages/pages-erreurs/not-found/not-found.component';
 import { UnavailableComponent } from './pages/pages-erreurs/unavailable/unavailable.component';
 import { ProduitsComponent } from './pages/produits/produits.component';
-import { MarchantComponent } from './pages/marchant/marchant.component';
 
 export const routes: Routes = 
 [
@@ -34,6 +36,8 @@ export const routes: Routes =
     { path: 'login', component: LoginFormComponent },
     { path: 'register', component: RegisterFormComponent },
     { path: 'contact', component: ContactFormComponent },
+    { path: 'reset-password-request', component: ResetPasswordRequestComponent },
+    { path: 'reset-password', component: ResetPasswordComponent },
 
     // pages administration
     { path: 'admin', component: AdminComponent, canActivate: [() => AuthGuard('ROLE_ADMIN')] },
@@ -53,7 +57,7 @@ export const routes: Routes =
 
     // pages client
     { path: 'user/profil/:id', component: UserProfilComponent },
-    { path: 'user/command-history/:id', component: UserCommandHistoryComponent },
+    { path: 'user/command-history', component: UserCommandHistoryComponent },
     { path: 'user/cart', component: UserCartComponent },
     { path: 'user/comments/:id', component: UserCommentComponent },
     { path: 'user/:id/edit', component: UserEditComponent },
