@@ -91,3 +91,23 @@ p {
         opacity: 1;
     }
 }
+
+@media screen and (max-width: 820px) 
+{
+    .body-accueil 
+    {
+        height: auto;
+        width: auto;
+    }
+    .tout-marches
+    {
+        display: flex;
+        flex-direction: column;
+        margin: 5px;
+    }
+    .card 
+    {
+        width: auto;
+        margin: 10px;
+    }
+}
