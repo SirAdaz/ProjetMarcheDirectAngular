@@ -90,3 +90,36 @@ h1
     justify-content: center;
     flex-wrap: wrap;
 }
+@media screen and (max-width: 820px) 
+{
+    .marche-commercant 
+    {
+        width: auto;
+        height: auto;
+    }
+    .card-text
+    {
+        display: flex;
+        flex-direction: column;
+    }
+    .info-marche 
+    {
+        border-bottom: solid 1px #838383;
+        border-right: none;
+        text-align: center;
+    }
+    .image-text 
+    {
+        display: flex;
+        flex-direction: column;
+    }
+    .image-marche 
+    {
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        height: 150px;
+        width: 100%;
+        margin: 0;
+    }
+}
