@@ -47,6 +47,8 @@ export class GestionDesCommandesComponent {
         (data: Commande[] | null) => {
           if (data) {
             this.commands = data;
+            console.log(this.commands);
+            
           } else {
             console.warn("No command data found for this user.");
           }
@@ -58,6 +60,7 @@ export class GestionDesCommandesComponent {
     } else {
       console.warn('User ID not available.');
     }
+    
     this.commandsService.getEtats().subscribe(
       (data: Etat[] | null) => {
         if (data) {
@@ -68,34 +71,6 @@ export class GestionDesCommandesComponent {
       },
       (error) => {
         console.error('Error retrieving etats data:', error);
-      }
-    );
-  }
-    
-  
-  cancelCommande(commandId: number): void {
-    const commandData = { "etat": "/api/etats/5" }; // Assurez-vous que 'etat' est le champ correct selon votre modèle.
-  
-    // Appelez le service pour mettre à jour la commande.
-    this.commandsService.updateCommande(commandId, commandData).subscribe(
-      (data: Commande | null) => {
-        if (data) {
-          // La commande a été mise à jour avec succès.
-          console.log('Commande annulée:', data);
-          
-          // Mettez à jour l'état de la commande dans l'interface utilisateur
-          const index = this.commands.findIndex(command => command.id === commandId);
-          if (index !== -1) {
-            this.commands[index].etat = data.etat; // Mettez à jour l'état avec la réponse de l'API.
-          }
-        } else {
-          // Gérer le cas où la commande n'a pas pu être annulée.
-          console.error('Erreur lors de l\'annulation de la commande.');
-        }
-      },
-      (error) => {
-        // Gérer les erreurs de l'appel API ici.
-        console.error('Erreur de communication avec le service:', error);
       }
     );
   }
