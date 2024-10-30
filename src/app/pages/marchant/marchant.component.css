@@ -3,7 +3,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 86vh;
 }
 .tout-marches 
 {
@@ -88,4 +87,16 @@ p
 .cart-item{
     border-bottom: 1px solid #838383;
     width: 100%;
+}
+@media screen and (max-width: 820px) 
+{
+    .body-marches 
+    {
+        width: auto;
+        height: auto;
+    }
+    .tout-marches 
+    {
+        width: 90%;
+    }
 }
