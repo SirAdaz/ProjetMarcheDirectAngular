@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import User from '../../models/user.model';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit
   userRole: string = '';
   @ViewChild('subMenu', { static:false }) subMenu!: ElementRef;
 
-  constructor(private searchService: SearchService, private router: Router, public authService: AuthService) {
+  constructor(private searchService: SearchService, private router: Router, public authService: AuthService, private route: ActivatedRoute) {
     this.searchForm = new FormControl();
 
     // Observateur de la saisie utilisateur
@@ -96,9 +96,42 @@ isLoggedIn()
 {
   return localStorage.getItem('isAuthenticated') === 'true';
 }
+updateHeader(url: string): void 
+{
+  if (url.includes('/commerce')) {
+    this.userRole = 'commercant';
+  }
+  else if (url.includes('/admin')) {
+    this.userRole = 'admin';
+  } 
+  else {
+    this.userRole = '';
+  }
+}
+
 ngOnInit(): void 
 {
   this.userRole = this.authService.getUserRole();
+  //Méthode pour le changement de header selon le rôle
+  this.router.events.subscribe((event) => {
+    if (event instanceof NavigationEnd) {
+      this.updateHeader(event.url)
+    }
+  })
+  
+  const userId = this.authService.decodedToken ? this.authService.decodedToken.id : null;
+  console.log(userId);
+    if (userId !== null) {
+      
+      this.authService.getUserById(userId).subscribe(
+        (data) => {
+          this.user = data;      
+        },
+        (error) => {
+          console.error('Erreur lors de la récupération des informations de l\'utilisateur', error);
+        }
+      );
+    }
 }
 //Méthode pour le dropdown Profile
 toggleMenu(): void 
@@ -107,5 +140,10 @@ toggleMenu(): void
   {
     this.subMenu.nativeElement.classList.toggle('open-menu');
   }   
+}
+
+// Méthode pour vérifier si l'utilisateur a le rôle de commerçant
+hasRole(role: string): boolean {
+  return this.authService.getRoles(role);
 }
 }

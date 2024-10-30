@@ -79,16 +79,13 @@ export class AuthService {
   //Méthode pour récupérer le rôle principal
   getUserRole(): string 
   {
-    if (this.decodedToken && this.decodedToken.roles.length > 0) 
-    {
-      return this.decodedToken.roles[0]; //Renvoie le premier rôle
-    }
-    return '';
+    const token = this.decodedToken;
+    return token?.role || '';
   }
 
   // Nouvelle méthode pour récupérer les informations d'un utilisateur par son ID
-  getUserById(userId: number): Observable<any> {
-    return this.http.get<any>(`${this.urlApi}/api/users/${userId}`);
+  getUserById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.urlApi}/api/users/${id}`);
   }
 
   getUserId(): number | null {

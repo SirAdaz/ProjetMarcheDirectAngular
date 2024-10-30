@@ -1,4 +1,5 @@
 import Etat from "./etat.model";
+import Marche from "./marche.model";
 import Produit from "./produit.model";
 import ProduitCommande from "./produitCommande.mode";
 import User from "./user.model";
@@ -10,5 +11,7 @@ export default interface Commande {
   etat: Etat;
   UserCommande: User[];
   produits: Produit[];
+  marche: Marche;
+  jour: string;
 }
   

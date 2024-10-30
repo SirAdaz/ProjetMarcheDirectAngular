@@ -40,7 +40,7 @@ export const routes: Routes =
     { path: 'reset-password', component: ResetPasswordComponent },
 
     // pages administration
-    { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+    { path: 'admin', component: AdminComponent, canActivate: [() => AuthGuard('ROLE_ADMIN')] },
 
     // pages global
     { path: 'accueil', component:AccueilComponent },
@@ -50,10 +50,10 @@ export const routes: Routes =
     { path: 'marchants/:id', component:MarchantComponent},
 
     // pages commerces
-    { path: 'commerce/accueil', component:AccueilCommerceComponent },
-    { path: 'commerce/profil-commerçant', component:ProfilCommercantComponent },
-    { path: 'commerce/gestion-des-produits', component:GestionDesProduitsComponent },
-    { path: 'commerce/gestion-des-commandes', component:GestionDesCommandesComponent },
+    { path: 'commerce/accueil', component:AccueilCommerceComponent, canActivate: [() => AuthGuard('ROLE_COMMERCANT')] },
+    { path: 'commerce/profil-commerçant', component:ProfilCommercantComponent, canActivate: [() => AuthGuard('ROLE_COMMERCANT')] },
+    { path: 'commerce/gestion-des-produits', component:GestionDesProduitsComponent, canActivate: [() => AuthGuard('ROLE_COMMERCANT')] },
+    { path: 'commerce/gestion-des-commandes', component:GestionDesCommandesComponent, canActivate: [() => AuthGuard('ROLE_COMMERCANT')] },
 
     // pages client
     { path: 'user/profil/:id', component: UserProfilComponent },

@@ -18,15 +18,16 @@ p {
     margin-bottom: 2rem;
 }
 
-a {
+button {
     text-decoration: none;
     color: #FEFAE0 !important;
     background-color: #132a13;
     padding: 10px 20px;
     border-radius: 5px;
+    border: 1px solid #FEFAE0;
     transition: background-color 0.3s ease;
 }
 
-a:hover {
+button:hover {
     background-color: #BC4749;
 }

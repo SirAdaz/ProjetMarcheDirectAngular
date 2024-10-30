@@ -17,7 +17,7 @@ body {
 }
 
 .box-text-rgpd {
-    background-color: var(--blanc);
+    background-color: #FEFAE0;
     color: var(--noir-vert);
     padding: 20px;
     max-width: 800px;
