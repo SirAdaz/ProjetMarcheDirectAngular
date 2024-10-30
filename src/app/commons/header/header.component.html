@@ -78,7 +78,7 @@
                       <p>Admin</p>
                   </a>
                 }
-                <a routerLink="logout" class="sub-menu-link" (click)="logout()">
+                <a class="sub-menu-link-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   <i class="fa-solid fa-right-from-bracket"></i>
                   <p>Déconnexion</p>
                 </a>
@@ -172,7 +172,7 @@
                       <p>Admin</p>
                   </a>
                 }
-                <a href="logout" class="sub-menu-link" (click)="logout()">
+                <a class="sub-menu-link-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   <i class="fa-solid fa-right-from-bracket"></i>
                   <p>Déconnexion</p>
                 </a>
@@ -188,6 +188,20 @@
           <i class="fa-solid fa-cart-shopping me-1"></i>
           <p class="m-0">Panier</p>
         </a>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h3>Voulez-vous vraiment vous déconnecter ?</h3>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
+            <button type="button" class="btn btn-clear" (click)="logout()" data-bs-dismiss="modal">Déconnexion</button>
+          </div>
+        </div>
       </div>
     </div>
 </nav>

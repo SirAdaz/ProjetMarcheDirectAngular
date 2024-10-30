@@ -228,3 +228,62 @@ nav a
   font-weight: 600;
   color: #4F772D;
 }
+.sub-menu-link-5
+{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin: 12px 0;
+  transition: color 0.3s ease; /*transition de couleur*/
+  cursor: pointer;
+}
+.sub-menu-link-5 p
+{
+  width: 100%;
+  color: #132A13;
+}
+.sub-menu-link-5 i
+{
+  width: 40px;
+  background: #90A955;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: 15px;
+  transition: color 0.3s ease; /*transition de couleur*/
+}
+.sub-menu-link-5:hover i 
+{
+  background: #4F772D;
+}
+.sub-menu-link-5:hover p
+{
+  font-weight: 600;
+  color: #4F772D;
+}
+.modal-content
+{
+  background-color: #FEFAE0;
+}
+.modal-content h3
+{
+  color: #132a13;
+}
+.btn-secondary 
+{
+  background: #132a13;
+  color: #FEFAE0;
+  font-weight: 400;
+}
+.btn-secondary:hover 
+{
+  background-color: #4F772D;
+}
+.btn-clear
+{
+  background-color: #BC4749;
+  color: #FEFAE0;
+}
+.btn-clear:hover 
+{
+  background-color: #7d292a;
+}
