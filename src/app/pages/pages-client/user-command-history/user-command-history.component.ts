@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { AuthService } from '../../../auth/auth.service';
 import Commande from '../../../models/command.model';
 import User from '../../../models/user.model';
-import { UserService } from '../../../services/user.service';
 import { CommandeService } from '../../../services/commande.service';
-import { AuthService } from '../../../auth/auth.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-user-command-history',
