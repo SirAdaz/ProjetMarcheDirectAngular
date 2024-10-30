@@ -20,6 +20,7 @@ declare var bootstrap: any;
 
 export class GestionDesProduitsComponent implements OnInit {
   urlImg = "https://127.0.0.1:8000/images/";
+  urlFormat = "api/formats/";
   user!: User;  // Utilisateur actuellement connecté
   produits!: Produit[];  // Liste des produits de l'utilisateur
   selectedProduct!: Produit;  // Produit sélectionné pour modification
@@ -36,21 +37,19 @@ export class GestionDesProduitsComponent implements OnInit {
   ) {
     // Initialisation du formulaire réactif avec des champs par défaut
     this.productForm = this.fb.group({
+      userProduct: [''],
       productName: [''],
       prix: [''],
       stock: [''],
       description: [''],
-      formatId: [''],
-      imageFileName: ["test"],
+      format: [''],
+      imageFileName: [''],
     });
   }
 
   // Gestion de la sélection du fichier image
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      this.selectedFile = file; // Enregistre l'image sélectionnée
-    }
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
   }
 
   // Fonction pour supprimer les balises HTML de la description du produit
@@ -68,23 +67,22 @@ export class GestionDesProduitsComponent implements OnInit {
 
     this.productService.getFormats().subscribe((data) => {
       this.formats = data;
-      console.log(data);
     });
   };
 
   // Créer un produit
   createProduct() {
     const newProduct = this.productForm.value; // Récupère les valeurs du formulaire
+    console.log('Form Values:', newProduct);
 
     // Appel au service sans image
-    this.productService.createProduct({...newProduct, formatId: newProduct.formatId}).subscribe(
+    this.productService.createProduct({ ...newProduct, formatId: newProduct.formatId }).subscribe(
       createdProduct => {
         this.produits.push(createdProduct); // Ajouter le produit créé à la liste locale
         this.closeModal('createProductModal'); // Ferme le modal après la création
       },
       error => {
         console.error('Erreur lors de la création du produit:', error);
-        console.log(newProduct)
       }
     );
   }
@@ -109,6 +107,29 @@ export class GestionDesProduitsComponent implements OnInit {
     }
   }
 
+  onUpdateImage(): void {
+    if (this.selectedProduct && this.selectedFile) {
+      const formData = new FormData();
+      formData.append('file', this.selectedFile, this.selectedFile.name);
+
+      this.userService.uploadImageProduit(this.selectedProduct.id, formData).subscribe({
+        next: (response) => {
+          console.log('Upload réussi', response);
+          this.user.imageFileName = response.filename;
+          // Fermer la modal après la modification
+          const modalElement = document.getElementById('modifImage');
+          if (modalElement) {
+            const modal = new bootstrap.Modal(modalElement);
+            modal.hide();
+          }
+        },
+        error: (error) => {
+          console.error('Erreur lors de l\'upload', error);
+        }
+      });
+    }
+  }
+
   // Supprimer le produit
   deleteProduct() {
     if (this.productToDelete) {
@@ -127,6 +148,9 @@ export class GestionDesProduitsComponent implements OnInit {
     const modalElement = document.getElementById('createProductModal');
     const modal = new bootstrap.Modal(modalElement);
     modal.show();
+    this.productForm.patchValue({
+      userProduct: "api/users/" + this.user.id
+    });
   }
 
   // Ouvrir le modal de modification avec le produit sélectionné
@@ -136,6 +160,15 @@ export class GestionDesProduitsComponent implements OnInit {
     const modalElement = document.getElementById('updateProductModal');
     const modal = new bootstrap.Modal(modalElement);
     modal.show();
+  }
+
+  openModalModifImage(product: Produit): void {
+    this.selectedProduct = product;
+    const modalElement = document.getElementById('modifImage');
+    if (modalElement) {
+      const modal = new bootstrap.Modal(modalElement);
+      modal.show();
+    }
   }
 
   // Fermer le modal

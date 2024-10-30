@@ -7,16 +7,22 @@
 .card {
     background-color: #FEFAE0;
     box-sizing: border-box;
-    height: 150px;
+    height: 200px;
+}
+
+.card-image {
+    display: flex;
+    align-items: center;
+    border-radius: 0;
+    width: 200px !important;
 }
 
 .image-marche {
     background-size: cover;
     background-position: center;
-    border-radius: 10px;
-    height: 120px;
-    width: 120px;
-    margin: 0;
+    width: 125px;
+    height: 125px;
+    margin-left: 3rem;
 }
 
 .marche-text {
@@ -48,4 +54,24 @@
 
 .btn-danger:hover {
     background-color: #973436;
+}
+
+.modal-content {
+    background-color: #FEFAE0;
+}
+
+.btn-border {
+    position: absolute;
+    height: 50px !important;
+    bottom: 0;
+    border-top: 1px solid #8383836b;
+    border-radius: 0;
+}
+
+.w-img {
+    border-radius: 5px;
+    margin-top: 12.5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

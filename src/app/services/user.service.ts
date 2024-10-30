@@ -36,6 +36,11 @@ export class UserService {
     return this.http.post(`${this.shortApiUrl}/upload/${id}`, formData);
   }
 
+  // Méthode pour mettre à jour l'image de l'utilisateur
+  uploadImageProduit(id: number,formData: FormData): Observable<any> {
+    return this.http.post(`${this.shortApiUrl}/upload/produit/${id}`, formData);
+  }
+
   getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/${id}`)
   }
