@@ -32,14 +32,16 @@ export class GestionDesProduitsComponent implements OnInit {
     private fb: FormBuilder,
     private productService: ProductService,
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
   ) {
     // Initialisation du formulaire réactif avec des champs par défaut
     this.productForm = this.fb.group({
       productName: [''],
       prix: [''],
       stock: [''],
-      description: ['']
+      description: [''],
+      formatId: [''],
+      imageFileName: ["test"],
     });
   }
 
@@ -63,6 +65,11 @@ export class GestionDesProduitsComponent implements OnInit {
       this.user = data;
       this.produits = this.user.produits;
     });
+
+    this.productService.getFormats().subscribe((data) => {
+      this.formats = data;
+      console.log(data);
+    });
   };
 
   // Créer un produit
@@ -77,6 +84,7 @@ export class GestionDesProduitsComponent implements OnInit {
       },
       error => {
         console.error('Erreur lors de la création du produit:', error);
+        console.log(newProduct)
       }
     );
   }
