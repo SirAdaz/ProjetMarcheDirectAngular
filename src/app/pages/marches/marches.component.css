@@ -58,3 +58,16 @@ p
 .btn-pagination:hover{
     background-color: #4F772D;
 }
+
+@media screen and (max-width: 820px) 
+{
+    .body-marches 
+    {
+        width: auto;
+        height: auto;
+    }
+    .card 
+    {
+        margin: 10px 0 0 0;
+    }
+}
