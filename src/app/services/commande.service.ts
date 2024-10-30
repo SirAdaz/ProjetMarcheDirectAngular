@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Commande from '../models/command.model';
 import { Observable } from 'rxjs';
+import Etat from '../models/etat.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +37,9 @@ export class CommandeService {
   // Méthode pour mettre à jour une commande
   updateCommande(id: number, data: any): Observable<Commande> {
     return this.http.patch<Commande>(`${this.urlApi}/commandes/${id}`, data);
+  }
+
+  getEtats(): Observable<Etat[]> {
+    return this.http.get<Etat[]>(`${this.urlApi}/etats`);
   }
 }
