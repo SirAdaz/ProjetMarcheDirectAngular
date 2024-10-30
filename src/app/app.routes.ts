@@ -57,7 +57,7 @@ export const routes: Routes =
 
     // pages client
     { path: 'user/profil/:id', component: UserProfilComponent },
-    { path: 'user/command-history/:id', component: UserCommandHistoryComponent },
+    { path: 'user/command-history', component: UserCommandHistoryComponent },
     { path: 'user/cart', component: UserCartComponent },
     { path: 'user/comments/:id', component: UserCommentComponent },
     { path: 'user/:id/edit', component: UserEditComponent },

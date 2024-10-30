@@ -19,6 +19,10 @@ export class CommandeService {
     return this.http.get<Commande>(`${this.urlApi}/commandes/${id}`);
   }
 
+  getCommandeByUserId(userId: number): Observable<Commande[]> {
+    return this.http.get<Commande[]>(`${this.urlApi}/commandes?userId=${userId}`);
+  }
+
   // Méthode pour récupérer les autres pages des auteurs
   getOtherPages(i: number): Observable<Commande[]> {
     return this.http.get<Commande[]>(`${this.urlApi}/produits?itemsPerPage=6&page=${i}`);
@@ -30,7 +34,7 @@ export class CommandeService {
   }
 
   // Méthode pour mettre à jour une commande
-  updateCommande(id: number, data: Commande): Observable<Commande> {
-    return this.http.put<Commande>(`${this.urlApi}/commandes/${id}`, data);
+  updateCommande(id: number, data: any): Observable<Commande> {
+    return this.http.patch<Commande>(`${this.urlApi}/commandes/${id}`, data);
   }
 }
