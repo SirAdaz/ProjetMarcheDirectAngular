@@ -94,6 +94,20 @@
         </button>
       </div>
     </div>
+
+    <div class="modal fade" id="exampleModale" tabindex="-1" aria-labelledby="exampleModaleLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h3>Voulez-vous vraiment vous déconnecter ?</h3>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
+            <button type="button" class="btn btn-clear" (click)="logout()" data-bs-dismiss="modal">Déconnexion</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </nav>
 }
 @else
