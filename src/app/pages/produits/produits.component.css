@@ -2,7 +2,7 @@
 {
     display: flex;
     justify-content: center;
-    align-items: center;
+    height: 84.5vh;
 }
 .tout-marches 
 {
@@ -53,6 +53,7 @@ p
     border: 1px solid #838383;
     color: #FEFAE0;
     width: fit-content;
+    height: fit-content;
 }
 .btn-pagination:hover{
     background-color: #4F772D;
@@ -62,7 +63,7 @@ p
     color: #132a13;
 }
 .cart-summary{
-    height: 100%;
+    max-height: 84.5vh; 
     overflow-y: auto; /* Activer le défilement vertical */
     background-color: #FEFAE0;
     overflow-x: hidden; 
