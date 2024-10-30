@@ -2,7 +2,7 @@
     <!-- Message de bienvenue -->
     <div class="row">
       <div class="col text-center">
-        <img [src]="getUserImageUrl(user?.imageFileName)" style="width: 80px; border-radius: 50%;" alt="User Image">
+        <img [src]="getUserImageUrl(user?.imageFileName)" style="width: 90px; height: 90px; border-radius: 50%;" alt="User Image">
 
         <h1>Bienvenue, {{ user?.userName}} !</h1>
       </div>
@@ -29,10 +29,6 @@
             <p><strong>Email:</strong> {{ user?.email}}</p>
             <p><strong>Nom d'utilisateur:</strong> {{ user?.userName}}</p>
             <p><strong>Num de Tel:</strong> {{ user?.tel}}</p>
-            <p><strong>Nom de la Boutique:</strong> {{ user?.nameBusiness}}</p>
-            <p><strong>Statistiques:</strong> {{ user?.stats}} </p>
-            <p><strong>Description Commerce: </strong> {{ user?.descriptionCommerce}}</p>
-            <p><strong>Numéro de siret:</strong> {{user?.numSiret}}</p>
           </div>
         </div>
       </div>
